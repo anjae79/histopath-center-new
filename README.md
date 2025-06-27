@@ -40,7 +40,7 @@
 ```
 
 ## 🔧 설정 정보
-- **Google Apps Script URL**: `AKfycbwtphWwbk_afvV58z-rVQuUlxkqtWWxI7irsS4Ofp4GF_5ICjDT5AeJ_AOZcrbloXdnjQ`
+- **Google Apps Script URL**: `AKfycbyDM9K2r0THTNEziwE5pZ_gtQnMZoMU0eaMc1k1PPECjEWIwRCPzEeKZxRdMsXf0t1hLQ`
 - **이메일**: `histopath.pnu@gmail.com`
 - **관리자**: 부산대학교 의과대학 조직병리코어센터
 
@@ -50,6 +50,7 @@
 - **주소**: 부산광역시 서구 아미동1가 10 부산대학교 의과대학
 
 ## 📝 업데이트 기록
+- **2025-06-27**: 연속카운터 + JPG최적화 + 사용자PDF첨부 최종 완성
 - **2025-06-26**: 이메일 시스템 문제 해결, 새로운 Google Apps Script 배포
 - **2025-06-26**: PDF 첨부 기능 추가, 이미지 기반 PDF 생성 최적화
 - **2025-06-26**: Vercel 배포 설정 완료

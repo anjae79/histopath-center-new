@@ -11,8 +11,8 @@ const isLocalhost = window.location.hostname === 'localhost' ||
 // 🧪 테스트 모드 설정 (true: 실제 이메일 발송, false: 시뮬레이션만)
 const FORCE_EMAIL_SENDING = true; // 로컬에서도 실제 이메일 발송하려면 true로 설정
 
-// 📍 Google Apps Script 웹앱 URL - 이미지 기반 PDF 첨부 기능 (2025-06-26 신규 배포)
-const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhWVqsI14Cx_e7JpAtgJ2QeRr0TE5TM8sQXkyb32K-4VyVVfL0jw_cvu5PHA5A8XvPgA/exec'; // 오류 수정 완벽 버전
+// 📍 Google Apps Script 웹앱 URL - 연속카운터 + JPG최적화 + 사용자PDF첨부 (2025-06-27 최종 배포)
+const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyDM9K2r0THTNEziwE5pZ_gtQnMZoMU0eaMc1k1PPECjEWIwRCPzEeKZxRdMsXf0t1hLQ/exec'; // 연속카운터 최종 완벽 버전
 
 // 🎯 환경별 설정
 const CONFIG = {
@@ -73,4 +73,4 @@ window.FORCE_EMAIL_SENDING = FORCE_EMAIL_SENDING;
 
 // 🚀 초기화 로그
 ConfigUtils.log(`환경 설정 로드 완료 - ${isLocalhost ? '개발' : '프로덕션'} 모드`); 
-ConfigUtils.log(`이미지 기반 PDF 첨부 기능 신규 배포 URL 적용: AKfycbwtphWwbk_afvV58z-rVQuUlxkqtWWxI7irsS4Ofp4GF_5ICjDT5AeJ_AOZcrbloXdnjQ`); 
+ConfigUtils.log(`연속카운터 + JPG최적화 + 사용자PDF첨부 최종 배포 URL 적용: AKfycbyDM9K2r0THTNEziwE5pZ_gtQnMZoMU0eaMc1k1PPECjEWIwRCPzEeKZxRdMsXf0t1hLQ`); 
