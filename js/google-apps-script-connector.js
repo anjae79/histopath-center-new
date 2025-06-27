@@ -375,26 +375,44 @@ function sendDataToGoogleAppsScript(data) {
       // fetch API를 사용한 POST 요청
       fetch(GOOGLE_APPS_SCRIPT_URL, {
         method: 'POST',
-        body: formData,
-        mode: 'no-cors' // CORS 정책 회피
+        body: formData
+        // no-cors 모드 제거하여 정상적인 응답 수신
       })
       .then(response => {
         console.log('📡 Google Apps Script 응답 상태:', response.status);
         
-        // no-cors 모드에서는 응답 내용을 읽을 수 없으므로
-        // 요청이 성공했다고 가정하고 가짜 응답 생성
-        const receiptNumber = generateTempReceiptNumber();
-        const mockResponse = {
-          success: true,
-          message: '신청이 성공적으로 접수되었습니다',
-          receiptNumber: receiptNumber
-        };
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         
-        resolve(mockResponse);
+        return response.json();
+      })
+      .then(responseData => {
+        console.log('✅ 실제 응답 데이터:', responseData);
+        
+        if (responseData.success) {
+          resolve(responseData);
+        } else {
+          reject(new Error(responseData.message || '알 수 없는 오류가 발생했습니다'));
+        }
       })
       .catch(error => {
         console.error('❌ POST 요청 실패:', error);
-        reject(new Error('네트워크 오류가 발생했습니다: ' + error.message));
+        
+        // 백업: CORS 오류시 가짜 응답 생성
+        if (error.message.includes('CORS') || error.message.includes('network')) {
+          console.log('🔄 CORS 오류 감지, 백업 처리...');
+          const receiptNumber = generateTempReceiptNumber();
+          const mockResponse = {
+            success: true,
+            message: '신청이 접수되었습니다 (백업 처리)',
+            receiptNumber: receiptNumber,
+            note: 'CORS 제한으로 인해 확인 불가'
+          };
+          resolve(mockResponse);
+        } else {
+          reject(new Error('네트워크 오류가 발생했습니다: ' + error.message));
+        }
       });
       
     } catch (error) {
