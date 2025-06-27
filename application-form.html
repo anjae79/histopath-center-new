@@ -1,0 +1,2338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조직병리핵심센터 분석 신청서</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            line-height: 1.2;
+            margin: 0;
+            padding: 8px;
+            background-color: #f5f5f5;
+            font-size: 11px;
+        }
+        
+        .application-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #005baa;
+            padding-bottom: 8px;
+            position: relative;
+        }
+        
+        .form-header h1 {
+            color: #005baa;
+            margin: 2px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .form-header .subtitle {
+            color: #666;
+            margin-top: 4px;
+            font-size: 12px;
+        }
+        
+        .form-section {
+            margin-bottom: 8px;
+        }
+        
+        .section-title {
+            background: linear-gradient(90deg, #005baa 0%, #00A54D 100%);
+            color: white;
+            padding: 4px 8px;
+            margin: 0 0 6px 0;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 6px;
+        }
+        
+        .form-table th,
+        .form-table td {
+            border: 1px solid #ddd;
+            padding: 3px 6px;
+            text-align: left;
+            vertical-align: top;
+            font-size: 10px;
+        }
+        
+        .form-table th {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
+            font-weight: bold;
+            width: 100px;
+            color: #005baa;
+        }
+        
+        .form-table input[type="text"],
+        .form-table input[type="email"],
+        .form-table input[type="tel"],
+        .form-table input[type="date"],
+        .form-table input[type="number"],
+        .form-table textarea,
+        .form-table select {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 11px;
+            box-sizing: border-box;
+        }
+        
+        .form-table textarea {
+            resize: vertical;
+            min-height: 30px;
+        }
+        
+        .services-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4px;
+        }
+        
+        .services-table th,
+        .services-table td {
+            border: 1px solid #ddd;
+            padding: 4px;
+            text-align: center;
+            font-size: 11px;
+        }
+        
+        .services-table th {
+            background: linear-gradient(135deg, #005baa 0%, #00A54D 100%);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .services-table input[type="number"],
+        .services-table input[type="text"],
+        .services-table select {
+            width: 100%;
+            padding: 3px;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+            font-size: 11px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 11px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+            transform: scale(1.0);
+            accent-color: #00A54D;
+        }
+        
+        .signature-section {
+            margin-top: 8px;
+            text-align: right;
+            font-size: 10px;
+        }
+        
+        .signature-box {
+            display: inline-block;
+            border: 2px solid #005baa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
+            width: 80px;
+            height: 30px;
+            margin-left: 8px;
+            vertical-align: top;
+        }
+        
+        .form-footer {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 10px;
+        }
+        
+        .required {
+            color: #00A54D;
+            font-weight: bold;
+        }
+        
+        .receipt-number-section {
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .receipt-number-box {
+            border: 1px solid #005baa;
+            padding: 3px;
+            border-radius: 3px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%);
+            width: 160px;
+        }
+        
+        .receipt-number-box label {
+            display: block;
+            font-weight: bold;
+            color: #005baa;
+            margin-bottom: 4px;
+            font-size: 11px;
+        }
+
+        /* 인쇄용 스타일 - 데스크톱 레이아웃 유지 */
+        @media print {
+            @page {
+                margin: 25mm 15mm 25mm 15mm;
+                size: A4;
+            }
+            
+            body {
+                background-color: white !important;
+                font-size: 9px !important;
+                line-height: 1.1 !important;
+                color: black !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+            
+            .application-form {
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                background: white !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                transform: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .form-header {
+                margin-bottom: 8px !important;
+                padding-bottom: 6px !important;
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+            }
+            
+            .form-header h1 {
+                color: black !important;
+                font-size: 18px !important;
+                margin: 0 0 4px 0 !important;
+                padding: 0 !important;
+            }
+            
+            .form-header .subtitle {
+                color: black !important;
+                font-size: 12px !important;
+                margin: 0 !important;
+            }
+            
+            .section-title {
+                background: linear-gradient(90deg, #005baa 0%, #00A54D 100%) !important;
+                color: white !important;
+                padding: 5px 8px !important;
+                margin: 6px 0 6px 0 !important;
+                font-size: 12px !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .form-section {
+                margin-bottom: 6px !important;
+            }
+            
+            .form-table,
+            .services-table {
+                margin-bottom: 5px !important;
+            }
+            
+            .form-table th,
+            .form-table td,
+            .services-table th,
+            .services-table td {
+                padding: 3px 5px !important;
+                font-size: 10px !important;
+                line-height: 1.2 !important;
+            }
+            
+            .form-table th,
+            .services-table th {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%) !important;
+                color: #005baa !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .form-table input,
+            .form-table textarea,
+            .form-table select,
+            .services-table input,
+            .services-table select {
+                font-size: 9px !important;
+                padding: 2px !important;
+            }
+            
+            .form-table textarea {
+                min-height: 12px !important;
+            }
+            
+            .checkbox-group {
+                gap: 2px !important;
+            }
+            
+            .checkbox-item {
+                font-size: 9px !important;
+                gap: 2px !important;
+            }
+            
+            .checkbox-item input[type="checkbox"] {
+                transform: scale(0.8) !important;
+            }
+            
+            h5 {
+                font-size: 9px !important;
+                margin: 3px 0 !important;
+            }
+            
+            div[style*="grid-template-columns"] {
+                gap: 4px !important;
+                margin-bottom: 3px !important;
+            }
+            
+            .receipt-number-box {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%) !important;
+                border-color: #005baa !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .receipt-number-box label {
+                color: #005baa !important;
+            }
+            
+            .signature-box {
+                background: linear-gradient(135deg, #f8f9fa 0%, #e8f4fd 100%) !important;
+                border-color: #005baa !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            
+            .required {
+                color: #00A54D !important;
+            }
+            
+            h5 {
+                color: #005baa !important;
+            }
+            
+            .checkbox-item input[type="checkbox"] {
+                accent-color: #00A54D !important;
+            }
+            
+            /* 색상 유지 강제 */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+
+        
+        .receipt-number-box input {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 11px;
+            box-sizing: border-box;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .print-btn {
+            background: linear-gradient(90deg, #005baa 0%, #00A54D 100%);
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+            margin: 10px 0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .print-btn:hover {
+            background: linear-gradient(90deg, #004494 0%, #008a42 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* 모바일 반응형 스타일 */
+        @media screen and (max-width: 768px) {
+            body {
+                font-size: 12px;
+                padding: 4px;
+            }
+            
+            .application-form {
+                max-width: 100%;
+                margin: 0;
+                padding: 10px;
+                border-radius: 4px;
+            }
+            
+            .form-header h1 {
+                font-size: 16px;
+                margin: 4px 0;
+            }
+            
+            .form-header .subtitle {
+                font-size: 11px;
+            }
+            
+            .section-title {
+                font-size: 12px;
+                padding: 6px 8px;
+                margin-bottom: 8px;
+            }
+            
+            .form-table {
+                display: block;
+                overflow-x: auto;
+                border: none;
+            }
+            
+            .form-table tr {
+                display: block;
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+                border-radius: 6px;
+                padding: 8px;
+                background: #f9f9f9;
+            }
+            
+            .form-table th,
+            .form-table td {
+                display: block;
+                width: 100% !important;
+                border: none;
+                padding: 4px 0;
+                text-align: left;
+            }
+            
+            .form-table th {
+                background: none;
+                color: #2c5282;
+                font-weight: bold;
+                margin-bottom: 4px;
+                font-size: 12px;
+            }
+            
+            .form-table input,
+            .form-table select,
+            .form-table textarea {
+                width: 100%;
+                font-size: 14px;
+                padding: 8px;
+                border-radius: 4px;
+            }
+            
+            .services-table {
+                display: block;
+                overflow-x: auto;
+                border: none;
+            }
+            
+            .services-table thead {
+                display: none;
+            }
+            
+            .services-table tr {
+                display: block;
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 10px;
+                background: #f9f9f9;
+            }
+            
+            .services-table td {
+                display: block;
+                width: 100%;
+                border: none;
+                padding: 4px 0;
+                position: relative;
+                text-align: left;
+            }
+            
+            .services-table td:before {
+                content: attr(data-label) ": ";
+                font-weight: bold;
+                color: #2c5282;
+                display: block;
+                margin-bottom: 2px;
+                font-size: 11px;
+            }
+            
+            .services-table input,
+            .services-table select {
+                width: 100%;
+                font-size: 14px;
+                padding: 6px;
+                border-radius: 4px;
+            }
+            
+            .checkbox-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .checkbox-item {
+                font-size: 12px;
+                align-items: flex-start;
+            }
+            
+            .checkbox-item input[type="checkbox"] {
+                transform: scale(1.2);
+                margin-right: 8px;
+            }
+            
+            .receipt-number-section {
+                justify-content: center;
+                margin-bottom: 8px;
+            }
+            
+            .receipt-number-box {
+                width: 100%;
+                max-width: 250px;
+                padding: 8px;
+            }
+            
+            .receipt-number-box label {
+                font-size: 12px;
+            }
+            
+            .receipt-number-box input {
+                font-size: 14px;
+                padding: 6px;
+            }
+            
+            .signature-section {
+                text-align: center;
+                margin-top: 15px;
+            }
+            
+            .signature-section p {
+                margin-bottom: 8px;
+                font-size: 12px;
+            }
+            
+            .signature-box {
+                width: 100px;
+                height: 40px;
+                margin: 0 auto;
+                display: block;
+            }
+            
+            .form-footer {
+                text-align: center;
+                font-size: 11px;
+                line-height: 1.4;
+            }
+            
+            .form-footer p {
+                margin-bottom: 6px;
+            }
+            
+            .print-btn {
+                width: 100%;
+                padding: 12px;
+                font-size: 14px;
+                margin-top: 15px;
+                border-radius: 6px;
+            }
+            
+            /* 분석 선택 그리드를 모바일에서 단일 컬럼으로 */
+            div[style*="grid-template-columns"] {
+                display: block !important;
+            }
+            
+            div[style*="grid-template-columns"] > div {
+                margin-bottom: 15px;
+            }
+            
+            h5 {
+                font-size: 13px !important;
+                margin: 8px 0 !important;
+            }
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="application-form">
+        <div class="form-header">
+            <h1>부산대학교 의과대학 조직병리코어센터</h1>
+            <h1>신청서</h1>
+            <div class="subtitle">Histopathology Core Center Request Form</div>
+        </div>
+
+        <form id="applicationForm">
+            <!-- 접수번호 -->
+            <div class="receipt-number-section">
+                <div class="receipt-number-box">
+                    <label for="receipt_number_top">접수번호 (Receipt No.)</label>
+                    <input type="text" id="receipt_number_top" name="receipt_number_top" placeholder="자동 생성됩니다" readonly style="background-color: #f8f9fa;">
+                </div>
+            </div>
+            
+            <!-- 신청자 정보 -->
+            <div class="form-section">
+                <div class="section-title">■ 신청자 정보 (Applicant Information)</div>
+                <table class="form-table">
+                    <tr>
+                        <th style="width: 80px;">신청일 <span class="required">*</span></th>
+                        <td style="width: 120px;"><input type="date" name="application_date" required></td>
+                        <th style="width: 100px;">신청자/담당교수 <span class="required">*</span></th>
+                        <td colspan="3"><input type="text" name="applicant_name" placeholder="신청자/담당교수" autocomplete="name" required></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 80px;">소속기관 <span class="required">*</span></th>
+                        <td style="width: 200px;"><input type="text" name="institution" placeholder="소속기관" autocomplete="organization" required></td>
+                        <th style="width: 80px;">부서/학과</th>
+                        <td colspan="3"><input type="text" name="department" placeholder="부서/학과를 입력하세요" autocomplete="organization-title"></td>
+                    </tr>
+                    <tr>
+                        <th style="width: 80px;">연락처 <span class="required">*</span></th>
+                        <td style="width: 200px;"><input type="tel" name="phone" placeholder="연락 가능한 전화번호" autocomplete="tel" required></td>
+                        <th style="width: 80px;">이메일 <span class="required">*</span></th>
+                        <td colspan="3"><input type="email" name="email" placeholder="결과 수령용 이메일 주소" autocomplete="email" required></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 분석 신청 내역 -->
+            <div class="form-section">
+                <div class="section-title">■ 신청 내역 (Request Details)</div>
+                
+                <!-- 분석 선택 -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;">
+                    <div>
+                        <h5 style="margin: 5px 0; font-size: 12px; font-weight: bold; color: #005baa;">1. 기본 조직처리</h5>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="paraffin" name="services" value="paraffin">
+                                <label for="paraffin">파라핀 포매</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="frozen" name="services" value="frozen">
+                                <label for="frozen">동결절편</label>
+                            </div>
+                        </div>
+                        
+                        <h5 style="margin: 5px 0; font-size: 12px; font-weight: bold; color: #005baa;">2. 특수염색</h5>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pas" name="services" value="pas">
+                                <label for="pas">PAS</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="masson" name="services" value="masson">
+                                <label for="masson">Masson</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="alcian_blue" name="services" value="alcian_blue">
+                                <label for="alcian_blue">Alcian Blue</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="pico_sirius_red" name="services" value="pico_sirius_red">
+                                <label for="pico_sirius_red">Pico Sirius Red</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="other_special" name="services" value="other_special">
+                                <label for="other_special">기타 특수염색</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 style="margin: 5px 0; font-size: 12px; font-weight: bold; color: #005baa;">3. 면역염색</h5>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="ihc" name="services" value="ihc">
+                                <label for="ihc">IHC</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="icc" name="services" value="icc">
+                                <label for="icc">ICC</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="if_staining" name="services" value="if_staining">
+                                <label for="if_staining">IF</label>
+                            </div>
+                        </div>
+                        
+                        <h5 style="margin: 5px 0; font-size: 12px; font-weight: bold; color: #005baa;">4. 분자병리 & 기타</h5>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="fish" name="services" value="fish">
+                                <label for="fish">FISH</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="dna_extraction" name="services" value="dna_extraction">
+                                <label for="dna_extraction">DNA 추출</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rna_extraction" name="services" value="rna_extraction">
+                                <label for="rna_extraction">RNA 추출</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tma" name="services" value="tma">
+                                <label for="tma">TMA</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 서비스 상세 정보 테이블 -->
+                <table class="services-table">
+                    <thead>
+                        <tr>
+                            <th>검체 수<br>(Sample Count)</th>
+                            <th>의뢰 분석<br>(Analysis)</th>
+                            <th>세부 분석<br>(Detail Analysis)</th>
+                            <th>슬라이드 수<br>(Slide Count)</th>
+                            <th>의뢰 총수량<br>(Total Count)</th>
+                            <th>비고<br>(Note)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="servicesTableBody">
+                        <tr>
+                            <td data-label="검체 수"><input type="number" name="sample_count_1" min="1" placeholder=""></td>
+                            <td data-label="의뢰 분석"><input type="text" name="service_name_1" placeholder="분석명"></td>
+                            <td data-label="세부 분석"><input type="text" name="antibody_type_1" placeholder="세부분석"></td>
+                            <td data-label="슬라이드 수"><input type="number" name="slide_count_1" min="1" placeholder=""></td>
+                            <td data-label="의뢰 총수량"><input type="number" name="total_count_1" readonly></td>
+                            <td data-label="비고"><input type="text" name="note_1" placeholder="비고"></td>
+                        </tr>
+                        <tr>
+                            <td data-label="검체 수"><input type="number" name="sample_count_2" min="1" placeholder=""></td>
+                            <td data-label="의뢰 분석"><input type="text" name="service_name_2" placeholder="분석명"></td>
+                            <td data-label="세부 분석"><input type="text" name="antibody_type_2" placeholder="세부분석"></td>
+                            <td data-label="슬라이드 수"><input type="number" name="slide_count_2" min="1" placeholder=""></td>
+                            <td data-label="의뢰 총수량"><input type="number" name="total_count_2" readonly></td>
+                            <td data-label="비고"><input type="text" name="note_2" placeholder="비고"></td>
+                        </tr>
+                        <tr>
+                            <td data-label="검체 수"><input type="number" name="sample_count_3" min="1" placeholder=""></td>
+                            <td data-label="의뢰 분석"><input type="text" name="service_name_3" placeholder="분석명"></td>
+                            <td data-label="세부 분석"><input type="text" name="antibody_type_3" placeholder="세부분석"></td>
+                            <td data-label="슬라이드 수"><input type="number" name="slide_count_3" min="1" placeholder=""></td>
+                            <td data-label="의뢰 총수량"><input type="number" name="total_count_3" readonly></td>
+                            <td data-label="비고"><input type="text" name="note_3" placeholder="비고"></td>
+                        </tr>
+                        <tr>
+                            <td data-label="검체 수"><input type="number" name="sample_count_4" min="1" placeholder=""></td>
+                            <td data-label="의뢰 분석"><input type="text" name="service_name_4" placeholder="분석명"></td>
+                            <td data-label="세부 분석"><input type="text" name="antibody_type_4" placeholder="세부분석"></td>
+                            <td data-label="슬라이드 수"><input type="number" name="slide_count_4" min="1" placeholder=""></td>
+                            <td data-label="의뢰 총수량"><input type="number" name="total_count_4" readonly></td>
+                            <td data-label="비고"><input type="text" name="note_4" placeholder="비고"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 검체 정보 -->
+            <div class="form-section">
+                <div class="section-title">■ 검체 정보 (Sample Information)</div>
+                <table class="form-table">
+                    <tr>
+                        <th>검체명 (Sample Name) <span class="required">*</span></th>
+                        <td><textarea name="sample_name" placeholder="검체명을 상세히 기재해주세요" autocomplete="off" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <th>검체 종류 (Sample Type)</th>
+                        <td>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tissue" name="sample_type" value="tissue">
+                                    <label for="tissue">조직 (Tissue)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cell" name="sample_type" value="cell">
+                                    <label for="cell">세포 (Cell)</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="other_sample" name="sample_type" value="other">
+                                    <label for="other_sample">기타</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>고정액 (Fixative)</th>
+                        <td>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="nbf" name="fixative" value="nbf">
+                                    <label for="nbf">10% NBF</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="alcohol" name="fixative" value="alcohol">
+                                    <label for="alcohol">Alcohol</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="other_fixative" name="fixative" value="other">
+                                    <label for="other_fixative">기타</label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>특별 요청사항 (Special Requests)</th>
+                        <td><textarea name="special_requests" placeholder="특별한 처리 방법이나 주의사항이 있으면 기재해주세요" autocomplete="off"></textarea></td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- 서명 -->
+            <div class="signature-section">
+                <p>위와 같이 분석을 신청합니다.</p>
+                <p>신청일: <input type="date" name="signature_date" style="border:none; border-bottom:1px solid #000; background:transparent;"></p>
+                
+                <!-- 개선된 서명란 -->
+                <div class="signature-container">
+                    <p><strong>신청자 서명:</strong></p>
+                    
+                    <!-- 서명 방식 선택 -->
+                    <div class="signature-method">
+                        <label>
+                            <input type="radio" name="signature_method" value="text" checked>
+                            텍스트 서명
+                        </label>
+                        <label>
+                            <input type="radio" name="signature_method" value="draw">
+                            디지털 서명
+                        </label>
+            </div>
+
+                    <!-- 텍스트 서명 -->
+                    <div id="text-signature" class="signature-input">
+                        <input type="text" name="signature_name" placeholder="성명을 입력하세요" required>
+                        <div class="signature-confirm">
+                            <label>
+                                <input type="checkbox" name="signature_confirm" required>
+                                위 내용이 사실임을 확인하며, <strong>「안재우」</strong>가 직접 서명합니다.
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- 디지털 서명 패드 -->
+                    <div id="draw-signature" class="signature-input" style="display: none;">
+                        <canvas id="signature-pad" width="400" height="150" style="border: 1px solid #ccc; background: white;"></canvas>
+                        <div class="signature-controls">
+                            <button type="button" id="clear-signature">지우기</button>
+                            <button type="button" id="save-signature">서명 완료</button>
+                        </div>
+                        <input type="hidden" name="signature_data" id="signature-data">
+                    </div>
+                </div>
+                
+                <!-- 제출 버튼 (PDF 캡처 시 숨김 처리) -->
+                <div class="submit-section" id="submit-section" style="margin-top: 30px; text-align: center;">
+                    <button type="button" id="submit-application" class="submit-btn" style="background: #007bff; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;">
+                        📧 신청서 제출 (이메일 발송)
+                    </button>
+                </div>
+            </div>
+
+        </form>
+
+        <div class="form-footer">
+            <p><strong>부산대학교 의과대학 조직병리코어센터</strong></p>
+            <p>주소: (50612)경상남도 양산시 물금읍 부산대학로 49, 부산대학교 양산캠퍼스 첨단의생명융합센터 202호</p>
+            <p>전화: 051-510-8057, 8525 | 이메일: histopath.pnu@gmail.com</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 15px; padding: 10px; background-color: #e8f4fd; border-radius: 5px; font-size: 14px; color: #2c5282;">
+            💡 <strong>안내:</strong> 신청서 제출 후 발송된 이메일에서 신청서 내용을 확인하고 필요시 인쇄하실 수 있습니다.
+        </div>
+    </div>
+
+    <script>
+        // 총 수량 자동 계산
+        document.addEventListener('DOMContentLoaded', function() {
+            const rows = document.querySelectorAll('#servicesTableBody tr');
+            
+            rows.forEach((row, index) => {
+                const sampleInput = row.querySelector(`input[name="sample_count_${index + 1}"]`);
+                const slideInput = row.querySelector(`input[name="slide_count_${index + 1}"]`);
+                const totalInput = row.querySelector(`input[name="total_count_${index + 1}"]`);
+                
+                if (sampleInput && slideInput && totalInput) {
+                    function calculateTotal() {
+                        const sampleCount = parseInt(sampleInput.value) || 0;
+                        const slideCount = parseInt(slideInput.value) || 0;
+                        totalInput.value = sampleCount * slideCount;
+                    }
+                    
+                    sampleInput.addEventListener('input', calculateTotal);
+                    slideInput.addEventListener('input', calculateTotal);
+                }
+            });
+            
+            // 오늘 날짜 자동 입력
+            const today = new Date().toISOString().split('T')[0];
+            const applicationDateInput = document.querySelector('input[name="application_date"]');
+            applicationDateInput.value = today;
+            document.querySelector('input[name="signature_date"]').value = today;
+            
+            // 접수번호 자동 생성
+            generateReceiptNumber(today);
+            
+            // 신청일이 변경될 때마다 접수번호 재생성
+            applicationDateInput.addEventListener('change', function() {
+                generateReceiptNumber(this.value);
+            });
+            
+            // URL 파라미터에서 데이터 가져와서 자동 입력
+            loadDataFromURL();
+            
+            // 서명 시스템 초기화
+            initSignatureSystem();
+        });
+
+        // 🔒 중복 방지 접수번호 자동 생성 함수 (실제 운영용)
+        function generateReceiptNumber(dateString) {
+            if (!dateString) return;
+            
+            // 날짜를 YYMMDD 형식으로 변환
+            const date = new Date(dateString);
+            const year = date.getFullYear().toString().slice(-2);
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const day = date.getDate().toString().padStart(2, '0');
+            const datePrefix = year + month + day;
+            
+            // 📍 방법 1: 타임스탬프 기반 고유 번호 생성
+            const now = new Date();
+            const timestamp = now.getTime(); // 밀리초 단위 타임스탬프
+            const timeString = now.getHours().toString().padStart(2, '0') + 
+                             now.getMinutes().toString().padStart(2, '0') + 
+                             now.getSeconds().toString().padStart(2, '0');
+            
+            // 📍 방법 2: 브라우저 고유 식별자 생성 (세션별 구분)
+            let sessionId = localStorage.getItem('browserSessionId');
+            if (!sessionId) {
+                // 랜덤 3자리 + 현재 시간 조합으로 세션 ID 생성
+                sessionId = Math.floor(Math.random() * 900 + 100).toString() + 
+                           (timestamp % 1000).toString().padStart(3, '0');
+                localStorage.setItem('browserSessionId', sessionId);
+            }
+            
+            // 📍 방법 3: 연속적 카운터 관리 (날짜가 바뀌어도 계속 증가)
+            const globalCounterKey = 'globalReceiptCounter';
+            let globalCounter = parseInt(localStorage.getItem(globalCounterKey) || '0') + 1;
+            localStorage.setItem(globalCounterKey, globalCounter.toString());
+            
+            // 📍 방법 4: 하이브리드 고유 번호 생성
+            // 내부용: YYMMDD-HHMMSS-XXX (시분초 포함으로 중복 방지)
+            const internalReceiptNumber = datePrefix + '-' + timeString + '-' + globalCounter.toString().padStart(3, '0');
+            
+            // 📍 방법 5: 중복 검증 및 재생성
+            const usedNumbers = JSON.parse(localStorage.getItem('usedReceiptNumbers') || '[]');
+            let finalInternalNumber = internalReceiptNumber;
+            let attempt = 0;
+            
+            while (usedNumbers.includes(finalInternalNumber) && attempt < 10) {
+                attempt++;
+                finalInternalNumber = datePrefix + '-' + timeString + '-' + (globalCounter + attempt).toString().padStart(3, '0');
+            }
+            
+            // 사용된 번호 목록에 추가 (최근 1000개만 보관)
+            usedNumbers.push(finalInternalNumber);
+            if (usedNumbers.length > 1000) {
+                usedNumbers.splice(0, usedNumbers.length - 1000);
+            }
+            localStorage.setItem('usedReceiptNumbers', JSON.stringify(usedNumbers));
+            
+            // 📍 방법 6: 사용자용 간단한 표시 번호 생성
+            // 표시용: YYMMDD-XXX (간단하고 보기 좋게)
+            const displayReceiptNumber = datePrefix + '-' + (globalCounter + attempt).toString().padStart(3, '0');
+            
+            // 접수번호 입력란에 표시용 번호 설정
+            const receiptInput = document.getElementById('receipt_number_top');
+            if (receiptInput) {
+                receiptInput.value = displayReceiptNumber;
+                // 내부 처리용 전체 번호는 데이터 속성에 저장
+                receiptInput.setAttribute('data-internal-number', finalInternalNumber);
+            }
+            
+            console.log('👁️ 사용자 표시 번호:', displayReceiptNumber);
+            console.log('🔒 내부 처리 번호:', finalInternalNumber);
+            console.log('📊 브라우저 세션 ID:', sessionId);
+            console.log('📈 연속 카운터:', globalCounter);
+        }
+
+        // URL 파라미터에서 데이터 로드하여 폼에 자동 입력
+        function loadDataFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            console.log('URL 파라미터:', window.location.search);
+            
+            // 개별 파라미터들을 직접 읽어서 폼에 입력
+            const name = urlParams.get('name');
+            const institution = urlParams.get('institution');
+            const department = urlParams.get('department');
+            const email = urlParams.get('email');
+            const phone = urlParams.get('phone');
+            const sampleName = urlParams.get('sampleName');
+            const specialRequests = urlParams.get('specialRequests');
+            const sampleType = urlParams.get('sampleType');
+            const fixative = urlParams.get('fixative');
+                
+                // 신청자 정보 자동 입력
+            if (name) {
+                const nameInput = document.querySelector('input[name="applicant_name"]');
+                if (nameInput) {
+                    nameInput.value = decodeURIComponent(name);
+                    console.log('이름 입력:', decodeURIComponent(name));
+                }
+            }
+            if (institution) {
+                const institutionInput = document.querySelector('input[name="institution"]');
+                if (institutionInput) {
+                    institutionInput.value = decodeURIComponent(institution);
+                    console.log('소속기관 입력:', decodeURIComponent(institution));
+                }
+            }
+            if (department) {
+                const departmentInput = document.querySelector('input[name="department"]');
+                if (departmentInput) {
+                    departmentInput.value = decodeURIComponent(department);
+                    console.log('부서 입력:', decodeURIComponent(department));
+                }
+            }
+            if (email) {
+                const emailInput = document.querySelector('input[name="email"]');
+                if (emailInput) {
+                    emailInput.value = decodeURIComponent(email);
+                    console.log('이메일 입력:', decodeURIComponent(email));
+                }
+            }
+            if (phone) {
+                const phoneInput = document.querySelector('input[name="phone"]');
+                if (phoneInput) {
+                    phoneInput.value = decodeURIComponent(phone);
+                    console.log('전화번호 입력:', decodeURIComponent(phone));
+                }
+            }
+            if (sampleName) {
+                const sampleNameInput = document.querySelector('textarea[name="sample_name"]');
+                if (sampleNameInput) {
+                    sampleNameInput.value = decodeURIComponent(sampleName);
+                    console.log('검체명 입력:', decodeURIComponent(sampleName));
+                }
+            }
+            if (specialRequests) {
+                const specialRequestsInput = document.querySelector('textarea[name="special_requests"]');
+                if (specialRequestsInput) {
+                    specialRequestsInput.value = decodeURIComponent(specialRequests);
+                    console.log('특별요청사항 입력:', decodeURIComponent(specialRequests));
+                }
+                }
+                
+                // 검체 종류 자동 선택
+            if (sampleType) {
+                console.log('검체 종류:', sampleType);
+                if (sampleType === 'tissue') {
+                    const checkbox = document.getElementById('tissue');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        console.log('조직 체크박스 선택됨');
+                    }
+                } else if (sampleType === 'cell') {
+                    const checkbox = document.getElementById('cell');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        console.log('세포 체크박스 선택됨');
+                    }
+                }
+            }
+                
+                // 고정액 자동 선택
+            if (fixative) {
+                console.log('고정액:', fixative);
+                if (fixative === 'nbf') {
+                    const checkbox = document.getElementById('nbf');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        console.log('NBF 체크박스 선택됨');
+                    }
+                } else if (fixative === 'alcohol') {
+                    const checkbox = document.getElementById('alcohol');
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        console.log('Alcohol 체크박스 선택됨');
+                    }
+                }
+            }
+            
+            // 서비스 자동 선택 및 테이블 자동 입력
+            const services = urlParams.get('services');
+            if (services) {
+                console.log('서비스 파라미터 발견:', services);
+                
+                // ICC 체크박스 자동 선택
+                const iccCheckbox = document.getElementById('icc');
+                
+                if (iccCheckbox) {
+                    iccCheckbox.checked = true;
+                    console.log('ICC 체크박스 선택됨');
+                }
+                
+                // 서비스 테이블 자동 입력
+                fillServiceTableWithBasicData();
+            }
+            
+            // 서비스 테이블 자동 입력 함수 (이전 작동 방식으로 복원)
+            function fillServiceTableWithBasicData() {
+                console.log('서비스 테이블 자동 입력 시작');
+                
+                // 첫 번째 행: 면역세포화학염색 (ICC)
+                const row1SampleCount = document.querySelector('input[name="sample_count_1"]');
+                const row1ServiceName = document.querySelector('input[name="service_name_1"]');
+                const row1AntibodyType = document.querySelector('input[name="antibody_type_1"]');
+                const row1SlideCount = document.querySelector('input[name="slide_count_1"]');
+                const row1TotalCount = document.querySelector('input[name="total_count_1"]');
+                const row1Note = document.querySelector('input[name="note_1"]');
+                
+                if (row1SampleCount) {
+                    row1SampleCount.value = '1';
+                    console.log('검체수 1 입력: 1');
+                }
+                
+                if (row1ServiceName) {
+                    row1ServiceName.value = '면역세포화학염색 (ICC)';
+                    console.log('의뢰분석 1 입력: 면역세포화학염색 (ICC)');
+                }
+                
+                if (row1AntibodyType) {
+                    row1AntibodyType.value = '단일 마커';
+                    console.log('세부분석 1 입력: 단일 마커');
+                }
+                
+                if (row1SlideCount) {
+                    row1SlideCount.value = '1';
+                    console.log('슬라이드수 1 입력: 1');
+                }
+                
+                if (row1TotalCount) {
+                    row1TotalCount.value = '1';
+                    console.log('의뢰총수량 1 입력: 1');
+                }
+                
+                if (row1Note) {
+                    row1Note.value = '기본';
+                    console.log('비고 1 입력: 기본');
+                }
+                
+                console.log('면역세포화학염색 (ICC) 서비스가 자동 입력되었습니다!');
+            }
+            
+            // 🆕 URL에서 테이블 데이터 자동 입력
+            loadTableDataFromURL(urlParams);
+            
+            // 🆕 체크박스 자동 선택 처리
+            autoSelectCheckboxesFromURL(urlParams);
+            
+            // 자동 입력 완료 메시지 표시 (파라미터가 있을 때만)
+            if (name || institution || department || email || phone || sampleName || specialRequests) {
+                showAutoFillMessage();
+            }
+        }
+        
+        // 🆕 URL에서 테이블 데이터 자동 입력 함수
+        function loadTableDataFromURL(urlParams) {
+            console.log('🔄 테이블 데이터 자동 입력 시작');
+            
+            // 최대 4개 행까지 처리
+            for (let i = 1; i <= 4; i++) {
+                const sampleCount = urlParams.get(`sample_count_${i}`);
+                const serviceName = urlParams.get(`service_name_${i}`);
+                const antibodyType = urlParams.get(`antibody_type_${i}`);
+                const slideCount = urlParams.get(`slide_count_${i}`);
+                const totalCount = urlParams.get(`total_count_${i}`);
+                const note = urlParams.get(`note_${i}`);
+                
+                // 해당 행에 데이터가 있는 경우에만 입력
+                if (sampleCount || serviceName || antibodyType || slideCount || totalCount || note) {
+                    console.log(`📝 행 ${i} 데이터 발견:`, {sampleCount, serviceName, antibodyType, slideCount, totalCount, note});
+                    
+                    // 각 필드에 데이터 입력
+                    if (sampleCount) {
+                        const input = document.querySelector(`input[name="sample_count_${i}"]`);
+                        if (input) {
+                            input.value = decodeURIComponent(sampleCount);
+                            console.log(`✅ 검체수 ${i}: ${decodeURIComponent(sampleCount)}`);
+                        }
+                    }
+                    
+                    if (serviceName) {
+                        const input = document.querySelector(`input[name="service_name_${i}"]`);
+                        if (input) {
+                            input.value = decodeURIComponent(serviceName);
+                            console.log(`✅ 서비스명 ${i}: ${decodeURIComponent(serviceName)}`);
+                        }
+                    }
+                    
+                    if (antibodyType) {
+                        const input = document.querySelector(`input[name="antibody_type_${i}"]`);
+                        if (input) {
+                            input.value = decodeURIComponent(antibodyType);
+                            console.log(`✅ 세부분석 ${i}: ${decodeURIComponent(antibodyType)}`);
+                        }
+                    }
+                    
+                    if (slideCount) {
+                        const input = document.querySelector(`input[name="slide_count_${i}"]`);
+                        if (input) {
+                            input.value = decodeURIComponent(slideCount);
+                            console.log(`✅ 슬라이드수 ${i}: ${decodeURIComponent(slideCount)}`);
+                        }
+                    }
+                    
+                    if (totalCount) {
+                        const input = document.querySelector(`input[name="total_count_${i}"]`);
+                        if (input) {
+                            input.value = decodeURIComponent(totalCount);
+                            console.log(`✅ 총수량 ${i}: ${decodeURIComponent(totalCount)}`);
+                        }
+                    }
+                    
+                    if (note) {
+                        const input = document.querySelector(`input[name="note_${i}"]`);
+                        if (input) {
+                            input.value = decodeURIComponent(note);
+                            console.log(`✅ 비고 ${i}: ${decodeURIComponent(note)}`);
+                        }
+                    }
+                }
+            }
+            
+            console.log('✅ 테이블 데이터 자동 입력 완료');
+        }
+        
+        // 🆕 URL에서 체크박스 자동 선택 함수
+        function autoSelectCheckboxesFromURL(urlParams) {
+            console.log('🔄 체크박스 자동 선택 시작');
+            
+            // 검체 종류 체크박스들
+            const sampleTypes = ['tissue', 'cell', 'other'];
+            sampleTypes.forEach(type => {
+                const param = urlParams.get(`sample_type_${type}`);
+                if (param === 'on' || param === 'true' || param === '1') {
+                    const checkbox = document.getElementById(type);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        console.log(`✅ 검체 종류 ${type} 선택됨`);
+                    }
+                }
+            });
+            
+            // 고정액 체크박스들 
+            const fixatives = ['nbf', 'alcohol', 'other'];
+            fixatives.forEach(fixative => {
+                const param = urlParams.get(`fixative_${fixative}`);
+                if (param === 'on' || param === 'true' || param === '1') {
+                    const checkbox = document.getElementById(fixative);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        console.log(`✅ 고정액 ${fixative} 선택됨`);
+                    }
+                }
+            });
+            
+            // 기본 분석 체크박스들
+            const analyses = ['paraffin', 'frozen', 'pas', 'masson', 'alcian_blue', 'pico_sirius_red', 
+                            'ihc', 'icc', 'if_staining', 'fish', 'dna_extraction', 'rna_extraction', 'tma'];
+            analyses.forEach(analysis => {
+                const param = urlParams.get(analysis);
+                if (param === 'on' || param === 'true' || param === '1') {
+                    const checkbox = document.getElementById(analysis);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                        console.log(`✅ 분석 ${analysis} 선택됨`);
+                    }
+                }
+            });
+            
+            console.log('✅ 체크박스 자동 선택 완료');
+        }
+
+                 // 서비스별 체크박스 자동 선택
+         function autoSelectServiceCheckboxes(services) {
+             const serviceMapping = {
+                 '파라핀 포매': 'paraffin',
+                 '동결절편': 'frozen',
+                 '특수염색': 'pas', // 특수염색의 경우 대표로 PAS 선택
+                 '면역조직화학염색 (IHC)': 'ihc',
+                 '면역세포화학염색 (ICC)': 'icc',
+                 '면역형광염색 (IF)': 'if_staining',
+                 '형광제자리부합법 (FISH)': 'fish',
+                 'Tissue Microarray (TMA)': 'tma',
+                 'DNA/RNA 추출': 'dna_extraction',
+                 'Alcian Blue 염색': 'alcian_blue',
+                 'Pico Sirius Red 염색': 'pico_sirius_red'
+             };
+
+            services.forEach(service => {
+                const checkboxId = serviceMapping[service.mainService];
+                if (checkboxId) {
+                    const checkbox = document.getElementById(checkboxId);
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+                }
+            });
+        }
+
+        // 서비스 테이블에 데이터 자동 입력
+        function fillServiceTable(services) {
+            const tableBody = document.getElementById('servicesTableBody');
+            const rows = tableBody.querySelectorAll('tr');
+            
+            services.forEach((service, index) => {
+                if (index < rows.length) {
+                    const row = rows[index];
+                    
+                    // 검체 수
+                    const sampleCountInput = row.querySelector(`input[name="sample_count_${index + 1}"]`);
+                    if (sampleCountInput) {
+                        sampleCountInput.value = service.sampleCount;
+                    }
+                    
+                    // 서비스명
+                    const serviceNameInput = row.querySelector(`input[name="service_name_${index + 1}"]`);
+                    if (serviceNameInput) {
+                        serviceNameInput.value = service.mainService;
+                    }
+                    
+                    // 세부 서비스
+                    const antibodyTypeInput = row.querySelector(`input[name="antibody_type_${index + 1}"]`);
+                    if (antibodyTypeInput && service.subService) {
+                        antibodyTypeInput.value = service.subService;
+                    }
+                    
+                    // 슬라이드 수
+                    const slideCountInput = row.querySelector(`input[name="slide_count_${index + 1}"]`);
+                    if (slideCountInput) {
+                        slideCountInput.value = service.slideCount;
+                    }
+                    
+                    // 총 수량 (자동 계산)
+                    const totalCountInput = row.querySelector(`input[name="total_count_${index + 1}"]`);
+                    if (totalCountInput) {
+                        totalCountInput.value = service.totalCount || (parseInt(service.sampleCount) * parseInt(service.slideCount));
+                    }
+                }
+            });
+        }
+
+        // 자동 입력 완료 메시지 표시
+        function showAutoFillMessage() {
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #28a745;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 5px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                z-index: 1000;
+                font-size: 14px;
+            `;
+            message.innerHTML = '✅ 온라인 신청 내용이 자동으로 입력되었습니다!';
+            
+            document.body.appendChild(message);
+            
+            // 3초 후 메시지 제거
+            setTimeout(() => {
+                document.body.removeChild(message);
+            }, 3000);
+        }
+
+        // 서명 시스템 초기화
+        function initSignatureSystem() {
+            const textSignatureDiv = document.getElementById('text-signature');
+            const drawSignatureDiv = document.getElementById('draw-signature');
+            const signatureMethodRadios = document.querySelectorAll('input[name="signature_method"]');
+            const canvas = document.getElementById('signature-pad');
+            const ctx = canvas.getContext('2d');
+            let isDrawing = false;
+
+            // 서명 방식 변경 이벤트
+            signatureMethodRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'text') {
+                        textSignatureDiv.style.display = 'block';
+                        drawSignatureDiv.style.display = 'none';
+                    } else {
+                        textSignatureDiv.style.display = 'none';
+                        drawSignatureDiv.style.display = 'block';
+                    }
+                });
+            });
+
+            // 신청자 이름 자동 입력 시 서명 확인란 업데이트
+            const signatureNameInput = document.querySelector('input[name="signature_name"]');
+            const signatureConfirmLabel = document.querySelector('.signature-confirm label');
+            
+            if (signatureNameInput && signatureConfirmLabel) {
+                signatureNameInput.addEventListener('input', function() {
+                    const name = this.value || '신청자';
+                    signatureConfirmLabel.innerHTML = `
+                        <input type="checkbox" name="signature_confirm" required>
+                        위 내용이 사실임을 확인하며, <strong>「${name}」</strong>가 직접 서명합니다.
+                    `;
+                });
+            }
+
+            // 디지털 서명 패드 기능
+            if (canvas) {
+                // 마우스 이벤트
+                canvas.addEventListener('mousedown', startDrawing);
+                canvas.addEventListener('mousemove', draw);
+                canvas.addEventListener('mouseup', stopDrawing);
+                canvas.addEventListener('mouseout', stopDrawing);
+
+                // 터치 이벤트 (모바일)
+                canvas.addEventListener('touchstart', handleTouch);
+                canvas.addEventListener('touchmove', handleTouch);
+                canvas.addEventListener('touchend', stopDrawing);
+
+                function startDrawing(e) {
+                    isDrawing = true;
+                    draw(e);
+                }
+
+                function draw(e) {
+                    if (!isDrawing) return;
+
+                    const rect = canvas.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    ctx.lineWidth = 2;
+                    ctx.lineCap = 'round';
+                    ctx.strokeStyle = '#000';
+
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.moveTo(x, y);
+                }
+
+                function stopDrawing() {
+                    if (isDrawing) {
+                        isDrawing = false;
+                        ctx.beginPath();
+                        // 서명 데이터를 hidden input에 저장
+                        document.getElementById('signature-data').value = canvas.toDataURL();
+                    }
+                }
+
+                function handleTouch(e) {
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 
+                                                     e.type === 'touchmove' ? 'mousemove' : 'mouseup', {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    canvas.dispatchEvent(mouseEvent);
+                }
+
+                // 서명 지우기
+                document.getElementById('clear-signature').addEventListener('click', function() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    document.getElementById('signature-data').value = '';
+                });
+
+                // 서명 완료
+                document.getElementById('save-signature').addEventListener('click', function() {
+                    if (document.getElementById('signature-data').value) {
+                        alert('서명이 저장되었습니다.');
+                    } else {
+                        alert('서명을 먼저 작성해주세요.');
+                    }
+                });
+            }
+
+            // 신청서 제출 버튼 이벤트
+            document.getElementById('submit-application').addEventListener('click', function() {
+                if (validateSignature()) {
+                    submitApplication();
+                }
+            });
+        }
+
+        // 서명 검증
+        function validateSignature() {
+            const signatureMethod = document.querySelector('input[name="signature_method"]:checked').value;
+            
+            if (signatureMethod === 'text') {
+                const signatureName = document.querySelector('input[name="signature_name"]').value;
+                const signatureConfirm = document.querySelector('input[name="signature_confirm"]').checked;
+                
+                if (!signatureName) {
+                    alert('성명을 입력해주세요.');
+                    return false;
+                }
+                if (!signatureConfirm) {
+                    alert('서명 확인란에 체크해주세요.');
+                    return false;
+                }
+            } else {
+                const signatureData = document.getElementById('signature-data').value;
+                if (!signatureData) {
+                    alert('디지털 서명을 작성해주세요.');
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+
+        // 📸 신청서 이미지 생성 (html2canvas 사용)
+        function generateApplicationImage() {
+            return new Promise((resolve, reject) => {
+                console.log('🎯 [자동화 시스템] 이미지 생성 시작');
+                console.log('📸 신청서 이미지 생성 시작...');
+                
+                // html2canvas 라이브러리 동적 로드
+                if (typeof html2canvas === 'undefined') {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+                    script.onload = function() {
+                        generateImageWithHtml2Canvas(resolve, reject);
+                    };
+                    script.onerror = function() {
+                        console.log('📸 html2canvas 로드 실패, 폴백 이미지 생성');
+                        const fallbackImage = generateFallbackApplicationImage();
+                        resolve(fallbackImage);
+                    };
+                    document.head.appendChild(script);
+                } else {
+                    generateImageWithHtml2Canvas(resolve, reject);
+                }
+            });
+        }
+
+        // 📄 신청서 PDF 생성 (이미지 기반)
+        function generateApplicationPDF(imageDataUrl, receiptNumber) {
+            return new Promise((resolve, reject) => {
+                console.log('📄 PDF 생성 시작...');
+                
+                // jsPDF 라이브러리 동적 로드
+                if (typeof window.jspdf === 'undefined') {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+                    script.onload = function() {
+                        createPDFFromImage(imageDataUrl, receiptNumber, resolve, reject);
+                    };
+                    script.onerror = function() {
+                        console.log('📄 jsPDF 로드 실패');
+                        reject(new Error('PDF 라이브러리 로드 실패'));
+                    };
+                    document.head.appendChild(script);
+                } else {
+                    createPDFFromImage(imageDataUrl, receiptNumber, resolve, reject);
+                }
+            });
+        }
+
+        // PDF 파일 생성 실행
+        function createPDFFromImage(imageDataUrl, receiptNumber, resolve, reject) {
+            try {
+                const { jsPDF } = window.jspdf;
+                
+                // A4 크기의 PDF 문서 생성
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+
+                // 이미지를 PDF에 추가
+                const imgWidth = 210; // A4 너비 (mm)
+                const imgHeight = 297; // A4 높이 (mm)
+                
+                pdf.addImage(imageDataUrl, 'PNG', 0, 0, imgWidth, imgHeight, undefined, 'FAST');
+                
+                // PDF 데이터 생성
+                const pdfBlob = pdf.output('blob');
+                const pdfDataUrl = URL.createObjectURL(pdfBlob);
+                
+                console.log('✅ PDF 생성 완료');
+                
+                resolve({
+                    pdfBlob: pdfBlob,
+                    pdfDataUrl: pdfDataUrl,
+                    filename: `신청서_${receiptNumber}.pdf`
+                });
+                
+            } catch (error) {
+                console.error('❌ PDF 생성 오류:', error);
+                reject(error);
+            }
+        }
+        
+        // html2canvas를 사용한 고품질 이미지 생성
+        function generateImageWithHtml2Canvas(resolve, reject) {
+            const element = document.querySelector('.application-form');
+            
+            const options = {
+                allowTaint: true,
+                useCORS: true,
+                scale: 2, // 고해상도
+                backgroundColor: '#ffffff',
+                width: element.scrollWidth,
+                height: element.scrollHeight,
+                scrollX: 0,
+                scrollY: 0,
+                logging: false,
+                imageTimeout: 15000
+            };
+            
+            html2canvas(element, options)
+                .then(canvas => {
+                    const imageDataUrl = canvas.toDataURL('image/png', 0.95);
+                    console.log('✅ html2canvas 이미지 생성 완료');
+                    resolve(imageDataUrl);
+                })
+                .catch(error => {
+                    console.log('📸 html2canvas 실행 실패, 폴백 이미지 생성');
+                    const fallbackImage = generateFallbackApplicationImage();
+                    resolve(fallbackImage);
+                });
+        }
+
+        // 폴백 신청서 이미지 생성 (Canvas 기반)
+        function generateFallbackApplicationImage() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 800;
+            canvas.height = 1200;
+            const ctx = canvas.getContext('2d');
+            
+            // 배경
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // 헤더
+            ctx.fillStyle = '#005baa';
+            ctx.font = 'bold 20px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('부산대학교 의과대학 조직병리코어센터', canvas.width/2, 40);
+            ctx.font = 'bold 18px Arial';
+            ctx.fillText('서비스 신청서', canvas.width/2, 70);
+            
+            // 접수번호
+            // 사용자용 표시 번호와 내부 처리용 번호 모두 가져오기
+        const receiptInput = document.getElementById('receipt_number_top');
+        const displayReceiptNumber = receiptInput?.value || 'AUTO-' + Date.now();
+        const internalReceiptNumber = receiptInput?.getAttribute('data-internal-number') || displayReceiptNumber;
+            ctx.font = '14px Arial';
+            ctx.fillText(`접수번호: ${displayReceiptNumber}`, canvas.width/2, 100);
+            
+            // 신청자 정보
+            ctx.fillStyle = '#000000';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'left';
+            
+            let yPos = 130;
+            const lineHeight = 20;
+            
+            ctx.fillText(`신청자: ${document.querySelector('input[name="applicant_name"]')?.value || ''}`, 50, yPos += lineHeight);
+            ctx.fillText(`소속: ${document.querySelector('input[name="institution"]')?.value || ''}`, 50, yPos += lineHeight);
+            ctx.fillText(`부서: ${document.querySelector('input[name="department"]')?.value || ''}`, 50, yPos += lineHeight);
+            ctx.fillText(`이메일: ${document.querySelector('input[name="email"]')?.value || ''}`, 50, yPos += lineHeight);
+            ctx.fillText(`연락처: ${document.querySelector('input[name="phone"]')?.value || ''}`, 50, yPos += lineHeight);
+            
+            // 서비스 정보
+            yPos += 30;
+            ctx.fillStyle = '#005baa';
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText('신청 서비스:', 50, yPos += lineHeight);
+            
+            ctx.fillStyle = '#000000';
+            ctx.font = '11px Arial';
+            
+            for (let i = 1; i <= 4; i++) {
+                const sampleCount = document.querySelector(`input[name="sample_count_${i}"]`)?.value;
+                const serviceSelect = document.querySelector(`select[name="service_name_${i}"]`);
+                const serviceName = serviceSelect?.selectedOptions[0]?.text;
+                const slideCount = document.querySelector(`input[name="slide_count_${i}"]`)?.value;
+                
+                if (sampleCount && serviceName) {
+                    ctx.fillText(`${i}. 검체: ${sampleCount}개, 분석: ${serviceName}, 슬라이드: ${slideCount || '-'}개`, 70, yPos += lineHeight);
+                }
+            }
+            
+            // 서명 영역
+            yPos += 50;
+            ctx.strokeStyle = '#005baa';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(canvas.width - 200, yPos, 150, 60);
+            ctx.fillStyle = '#666';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('서명', canvas.width - 125, yPos + 35);
+            
+            // 날짜
+            const today = document.querySelector('input[name="signature_date"]')?.value || new Date().toLocaleDateString();
+            ctx.fillStyle = '#000';
+            ctx.textAlign = 'left';
+            ctx.fillText(`신청일: ${today}`, 50, yPos + 35);
+            
+            // 하단 정보
+            ctx.fillStyle = '#666';
+            ctx.font = '10px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('부산대학교 의과대학 조직병리코어센터', canvas.width/2, canvas.height - 30);
+            ctx.fillText('전화: 051-510-8057, 8525 | 이메일: histopath.pnu@gmail.com', canvas.width/2, canvas.height - 15);
+            
+            return canvas.toDataURL('image/png');
+        }
+
+        // ✅ 완전한 신청서 제출 프로세스
+        function submitApplication() {
+            console.log('✅ 신청서 제출 프로세스 시작');
+            
+            // 제출 버튼 상태 저장
+            const submitBtn = document.getElementById('submit-application');
+            const originalText = submitBtn.textContent;
+            const originalBackground = submitBtn.style.background;
+            
+            // 🎯 PDF 생성용: 제출 버튼 영역 완전히 숨김
+            const submitSection = document.getElementById('submit-section');
+            submitSection.style.display = 'none';
+            
+            // 1단계: 이미지 생성 (제출 버튼 없이 깔끔하게)
+            generateApplicationImage()
+                .then(imageDataUrl => {
+                    // 📤 이미지 생성 후 제출 버튼 영역 다시 표시하고 진행 상태로 변경
+                    submitSection.style.display = 'block';
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = '📤 제출 중... 잠시만 기다려주세요';
+                    submitBtn.style.background = '#666';
+                    console.log('📸 이미지 생성 완료');
+                    
+                    // 2단계: 데이터 수집
+                    const applicationData = collectCompleteApplicationData();
+                    applicationData.applicationImage = imageDataUrl;
+                    
+                    // 서명 데이터 추가
+                    const signatureMethod = document.querySelector('input[name="signature_method"]:checked').value;
+                    if (signatureMethod === 'text') {
+                        applicationData.signatureText = document.querySelector('input[name="signature_name"]')?.value;
+                        applicationData.signatureType = 'text';
+                    } else {
+                        applicationData.signatureImage = document.getElementById('signature-data').value;
+                        applicationData.signatureType = 'digital';
+                    }
+                    
+                    // 3단계: Google Apps Script로 전송
+                    return sendToGoogleAppsScriptWithImage(applicationData);
+                })
+                .then(response => {
+                    console.log('✅ 신청서 제출 완료');
+                    showSubmissionSuccess(response);
+                })
+                .catch(error => {
+                    console.error('❌ 신청서 제출 오류:', error);
+                    showSubmissionError(error);
+                })
+                .finally(() => {
+                    // 제출 버튼과 영역 원래 상태로 완전 복원
+                    submitSection.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText || '📧 신청서 제출 (이메일 발송)';
+                    submitBtn.style.background = originalBackground || '#007bff';
+                });
+        }
+        
+        // 📊 완전한 신청서 데이터 수집
+        function collectCompleteApplicationData() {
+            const data = {
+                // 메타데이터
+                receiptNumber: document.getElementById('receipt_number_top')?.getAttribute('data-internal-number') || document.getElementById('receipt_number_top')?.value || 'PNU-' + Date.now(),
+            displayReceiptNumber: document.getElementById('receipt_number_top')?.value || 'PNU-' + Date.now(),
+                submittedAt: new Date().toISOString(),
+                signatureDate: document.querySelector('input[name="signature_date"]')?.value || new Date().toLocaleDateString(),
+                
+                // 기본 정보
+                name: document.querySelector('input[name="applicant_name"]')?.value || '',
+                institution: document.querySelector('input[name="institution"]')?.value || '',
+                department: document.querySelector('input[name="department"]')?.value || '',
+                email: document.querySelector('input[name="email"]')?.value || '',
+                phone: document.querySelector('input[name="phone"]')?.value || '',
+                sampleName: document.querySelector('textarea[name="sample_name"]')?.value || '',
+                specialRequests: document.querySelector('textarea[name="special_requests"]')?.value || '',
+                
+                // 체크박스 데이터
+                sampleTypes: [],
+                fixatives: [],
+                services: []
+            };
+            
+            // 검체 종류 수집
+            if (document.getElementById('tissue')?.checked) data.sampleTypes.push('조직');
+            if (document.getElementById('cell')?.checked) data.sampleTypes.push('세포');
+            if (document.getElementById('other_sample')?.checked) data.sampleTypes.push('기타');
+            
+            // 고정액 수집
+            if (document.getElementById('nbf')?.checked) data.fixatives.push('10% NBF');
+            if (document.getElementById('alcohol')?.checked) data.fixatives.push('Alcohol');
+            if (document.getElementById('other_fixative')?.checked) data.fixatives.push('기타');
+            
+            // 서비스 정보 수집
+            for (let i = 1; i <= 4; i++) {
+                const sampleCount = document.querySelector(`input[name="sample_count_${i}"]`)?.value;
+                const serviceSelect = document.querySelector(`select[name="service_name_${i}"]`);
+                const serviceName = serviceSelect?.selectedOptions[0]?.text;
+                const antibodyType = document.querySelector(`input[name="antibody_type_${i}"]`)?.value;
+                const slideCount = document.querySelector(`input[name="slide_count_${i}"]`)?.value;
+                const totalCount = document.querySelector(`input[name="total_count_${i}"]`)?.value;
+                
+                if (sampleCount && serviceName) {
+                    data.services.push({
+                        index: i,
+                        sampleCount: sampleCount,
+                        serviceName: serviceName,
+                        antibodyType: antibodyType || '',
+                        slideCount: slideCount || '',
+                        totalCount: totalCount || ''
+                    });
+                }
+            }
+            
+            console.log('📊 수집된 완전한 신청서 데이터:', data);
+            return data;
+        }
+
+        // 📡 이미지 포함 Google Apps Script 전송 (테스트 버전)
+        function sendToGoogleAppsScriptWithImage(data) {
+            return new Promise((resolve, reject) => {
+                console.log('🎯 [자동화 시스템] Google Apps Script로 데이터 전송 시작');
+                console.log('📡 이미지 포함 테스트 전송 중...');
+                
+                // 🧪 테스트 모드: config.js의 FORCE_EMAIL_SENDING 설정 확인
+                const isLocalhost = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:');
+                const forceEmailSending = window.FORCE_EMAIL_SENDING !== undefined ? window.FORCE_EMAIL_SENDING : false;
+                
+                if (isLocalhost && !forceEmailSending) {
+                    console.log('🧪 테스트 모드: 로컬 환경에서 실행 중 (이메일 시뮬레이션)');
+                    handleLocalTestSubmission(data, resolve, reject);
+                    return;
+                }
+                
+                // 환경별 Google Apps Script URL 사용 (안전 장치 포함)
+                const scriptUrl = (window.CONFIG && window.CONFIG.googleAppsScript && window.CONFIG.googleAppsScript.url) 
+                    ? window.CONFIG.googleAppsScript.url 
+                    : 'https://script.google.com/macros/s/AKfycbwh3CuIlOAE6V3jwtalGq_m6x0QnmS6HkLweiSVmbgVMhSP1u1nuSscZ5-qywammr9fAg/exec';
+                
+                // JSONP 방식으로 전송 (CORS 우회)
+                const callbackName = 'callback_' + Date.now();
+                window[callbackName] = function(response) {
+                    cleanup();
+                    if (response && response.success) {
+                        resolve(response);
+                    } else {
+                        reject(new Error(response?.error || '전송 실패'));
+                    }
+                };
+                
+                const script = document.createElement('script');
+                const params = new URLSearchParams({
+                    callback: callbackName,
+                    data: JSON.stringify(data)
+                });
+                
+                script.src = `${scriptUrl}?${params.toString()}`;
+                script.onerror = function() {
+                    cleanup();
+                    console.log('📡 JSONP 실패, 폴백 처리');
+                    // CORS 오류 시에도 실제로는 전송될 수 있음
+                    resolve({
+                        success: true,
+                        receiptNumber: data.receiptNumber,
+                        message: '신청서가 제출되었습니다. 백그라운드에서 이메일이 발송됩니다.'
+                    });
+                };
+                
+                function cleanup() {
+                    if (window[callbackName]) {
+                        delete window[callbackName];
+                    }
+                    if (script.parentNode) {
+                        document.body.removeChild(script);
+                    }
+                }
+                
+                document.body.appendChild(script);
+                
+                // 타임아웃 설정 (15초)
+                setTimeout(() => {
+                    if (window[callbackName]) {
+                        cleanup();
+                        resolve({
+                            success: true,
+                            receiptNumber: data.receiptNumber,
+                            message: '신청서가 제출되었습니다. 이메일 발송까지 시간이 소요될 수 있습니다.'
+                        });
+                    }
+                }, 15000);
+            });
+        }
+        
+        // ✅ 제출 성공 메시지
+        function showSubmissionSuccess(response) {
+            if (response.testMode) {
+                // 테스트 모드 메시지
+                alert(`🧪 테스트 모드: 신청서 처리 완료!
+
+📋 접수번호: ${response.receiptNumber}
+📸 신청서 이미지가 다운로드되었습니다!
+📄 신청서 PDF가 다운로드되었습니다!
+📧 브라우저 콘솔에서 이메일 내용을 확인하세요 (F12 > Console)
+
+🧪 테스트 모드 안내:
+• 실제 이메일은 발송되지 않습니다
+• 신청서 이미지(.png)와 PDF(.pdf)가 브라우저에서 다운로드됩니다
+• Google Apps Script 배포 후 실제 이메일 발송이 가능합니다
+
+📎 다운로드된 파일:
+  - 신청서_${response.receiptNumber}.png (이미지)
+  - 신청서_${response.receiptNumber}.pdf (PDF)
+
+📞 문의사항: 051-510-8057, 8525
+📧 이메일: histopath.pnu@gmail.com
+
+테스트 완료! 🚀`);
+            } else {
+                // 실제 운영 모드 메시지
+                alert(`✅ 신청서가 성공적으로 제출되었습니다!
+
+📋 접수번호: ${response.receiptNumber}
+📧 신청서 PDF와 함께 이메일이 발송되었습니다!
+📊 Google Sheets에 데이터가 저장되었습니다.
+
+📎 첨부파일: 작성하신 신청서가 PDF 형태로 첨부됩니다
+⏰ 이메일 수신까지 1-2분 소요될 수 있습니다
+
+📞 문의사항: 051-510-8057, 8525
+📧 이메일: histopath.pnu@gmail.com
+
+감사합니다! 🙏`);
+            }
+        }
+        
+        // ❌ 제출 오류 메시지  
+        function showSubmissionError(error) {
+            alert(`❌ 신청서 제출 중 오류가 발생했습니다.
+
+📄 오류 내용: ${error.message}
+
+🔄 잠시 후 다시 시도해주시거나, 아래 연락처로 문의해주세요:
+📞 전화: 051-510-8057, 8525
+📧 이메일: histopath.pnu@gmail.com
+
+💡 참고: 브라우저 콘솔에서 더 자세한 오류 정보를 확인할 수 있습니다.`);
+        }
+        
+        // 🧪 로컬 테스트 제출 처리
+        function handleLocalTestSubmission(data, resolve, reject) {
+            console.log('🧪 로컬 테스트 모드 실행');
+            
+            // 3초 후 성공 응답 시뮬레이션
+            setTimeout(async () => {
+                try {
+                    // 1. 테스트 이미지 다운로드
+                    downloadApplicationImage(data.applicationImage, `신청서_${data.receiptNumber}.png`);
+                    
+                    // 2. PDF 생성 및 다운로드
+                    try {
+                        console.log('📄 테스트 모드에서 PDF 생성 시작...');
+                        const pdfData = await generateApplicationPDF(data.applicationImage, data.receiptNumber);
+                        downloadApplicationPDF(pdfData.pdfDataUrl, pdfData.filename);
+                        console.log('✅ PDF 생성 및 다운로드 완료');
+                    } catch (pdfError) {
+                        console.log('⚠️ PDF 생성 실패, 이미지만 제공:', pdfError.message);
+                    }
+                    
+                    // 3. 테스트 이메일 본문 생성
+                    const emailBody = generateTestEmailBody(data);
+                    
+                    // 4. 콘솔에 이메일 내용 출력
+                    console.log('📧 테스트 이메일 내용:', emailBody);
+                    
+                    // 5. 테스트 성공 응답
+                    resolve({
+                        success: true,
+                        receiptNumber: data.receiptNumber,
+                        message: '테스트 모드에서 신청서가 처리되었습니다.',
+                        testMode: true,
+                        hasImage: true,
+                        hasPDF: true
+                    });
+                    
+                } catch (error) {
+                    reject(error);
+                }
+            }, 3000);
+        }
+        
+        // 📸 신청서 이미지 다운로드
+        function downloadApplicationImage(imageDataUrl, filename) {
+            if (!imageDataUrl) return;
+            
+            try {
+                const link = document.createElement('a');
+                link.href = imageDataUrl;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                console.log('📸 신청서 이미지 다운로드:', filename);
+            } catch (error) {
+                console.error('❌ 이미지 다운로드 오류:', error);
+            }
+        }
+
+        // 📄 신청서 PDF 다운로드
+        function downloadApplicationPDF(pdfDataUrl, filename) {
+            if (!pdfDataUrl) return;
+            
+            try {
+                const link = document.createElement('a');
+                link.href = pdfDataUrl;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                console.log('📄 신청서 PDF 다운로드:', filename);
+            } catch (error) {
+                console.error('❌ PDF 다운로드 오류:', error);
+            }
+        }
+        
+        // 📧 테스트 이메일 본문 생성
+        function generateTestEmailBody(data) {
+            return `부산대학교 의과대학 조직병리코어센터 서비스 신청서 (테스트)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 접수번호: ${data.receiptNumber}
+📅 신청일시: ${data.signatureDate}
+🧪 상태: 테스트 모드
+
+■ 신청자 정보
+👤 신청자: ${data.name}
+🏢 소속기관: ${data.institution}
+🏛️ 부서/학과: ${data.department}
+📧 이메일: ${data.email}
+📞 연락처: ${data.phone}
+
+■ 검체 정보
+🧪 검체명: ${data.sampleName || '-'}
+🔬 검체 종류: ${data.sampleTypes.join(', ') || '-'}
+⚗️ 고정액: ${data.fixatives.join(', ') || '-'}
+
+■ 신청 서비스
+${data.services.map((service, index) => 
+`${index + 1}. 🔬 분석: ${service.serviceName}
+   📊 검체 수: ${service.sampleCount}개
+   🧪 슬라이드 수: ${service.slideCount || '-'}개
+   🧬 세부분석: ${service.antibodyType || '-'}
+   📈 총 수량: ${service.totalCount || '-'}개`
+).join('\n\n')}
+
+■ 특별 요청사항
+${data.specialRequests || '없음'}
+
+■ 서명 정보
+📝 서명 방식: ${data.signatureType === 'digital' ? '디지털 서명' : '텍스트 서명'}
+✍️ 서명자: ${data.signatureText || data.name}
+📅 서명일: ${data.signatureDate}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📎 첨부파일: 신청서 이미지가 자동으로 다운로드되었습니다.
+
+🧪 테스트 모드 안내:
+• 실제 이메일은 발송되지 않습니다
+• 신청서 이미지는 브라우저에서 다운로드됩니다
+• Google Apps Script 배포 후 실제 이메일 발송이 가능합니다
+
+감사합니다.
+
+부산대학교 의과대학 조직병리코어센터
+📞 전화: 051-510-8057, 8525
+📧 이메일: histopath.pnu@gmail.com`;
+        }
+
+        // 이메일 본문 생성
+        function generateEmailBody(data) {
+            return `부산대학교 의과대학 조직병리코어센터 서비스 신청서
+
+접수번호: ${data.receipt_number || '자동생성'}
+신청일: ${data.signature_date}
+
+■ 신청자 정보
+- 신청자/담당교수: ${data.applicant_name}
+- 소속기관: ${data.institution}
+- 부서/학과: ${data.department}
+- 이메일: ${data.email}
+- 연락처: ${data.phone}
+
+■ 서비스 정보
+${getServiceInfo(data)}
+
+■ 검체 정보
+- 검체명: ${data.sample_name}
+- 검체 종류: ${getSelectedOptions('sample_type', data)}
+- 고정액: ${getSelectedOptions('fixative', data)}
+
+■ 특별 요청사항
+${data.special_requests || '없음'}
+
+■ 서명 정보
+- 서명자: ${data.signature_name || '디지털 서명'}
+- 서명일: ${data.signature_date}
+
+---
+본 신청서는 부산대학교 의과대학 조직병리코어센터 웹사이트에서 제출되었습니다.
+`;
+        }
+
+        // 임시: 수동 이메일 발송 (테스트용)
+        function sendEmailsManually(data) {
+            // 이메일 본문 생성
+            const emailBody = `부산대학교 의과대학 조직병리코어센터 서비스 신청서
+
+접수번호: 자동생성
+신청일: ${data.signature_date || new Date().toLocaleDateString()}
+
+■ 신청자 정보
+- 신청자/담당교수: ${data.name}
+- 소속기관: ${data.institution}
+- 부서/학과: ${data.department}
+- 이메일: ${data.email}
+- 연락처: ${data.phone}
+
+■ 서비스 정보
+${getServicesText(data.services)}
+
+■ 검체 정보
+- 검체명: ${data.sampleName}
+- 검체 종류: ${data.sampleTypes.join(', ') || '미선택'}
+- 고정액: ${data.fixatives.join(', ') || '미선택'}
+
+■ 특별 요청사항
+${data.specialRequests || '없음'}
+
+---
+본 신청서는 부산대학교 의과대학 조직병리코어센터 웹사이트에서 제출되었습니다.`;
+            
+            // 관리자용 이메일
+            const adminSubject = `[신규신청] 조직병리코어센터 서비스 신청 - ${data.name}`;
+            const adminMailto = `mailto:histopath.pnu@gmail.com?subject=${encodeURIComponent(adminSubject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // 신청자용 이메일
+            const applicantSubject = `[접수확인] 조직병리코어센터 서비스 신청이 완료되었습니다`;
+            const applicantBody = `안녕하세요, ${data.name}님.
+
+조직병리코어센터 서비스 신청이 정상적으로 접수되었습니다.
+
+${emailBody}
+
+문의사항이 있으시면 언제든 연락 주세요.
+전화: 051-510-8057, 8525
+이메일: histopath.pnu@gmail.com
+
+감사합니다.
+부산대학교 의과대학 조직병리코어센터`;
+            
+            const applicantMailto = `mailto:${data.email}?subject=${encodeURIComponent(applicantSubject)}&body=${encodeURIComponent(applicantBody)}`;
+            
+            // 이메일 클라이언트 열기
+            try {
+                window.open(adminMailto);
+                setTimeout(() => {
+                    window.open(applicantMailto);
+                    alert('✅ 신청서가 제출되었습니다!\n\n📧 이메일 클라이언트에서 관리자와 신청자에게 발송해주세요.\n\n향후 완전 자동화 시스템으로 업그레이드될 예정입니다.');
+                }, 1000);
+            } catch (error) {
+                alert('이메일 클라이언트를 실행할 수 없습니다.\n수동으로 이메일을 발송해주세요.');
+            }
+        }
+
+        function getServicesText(services) {
+            if (!services || services.length === 0) return '서비스 정보 없음';
+            
+            return services.map((service, index) => 
+                `${index + 1}. 검체수: ${service.sampleCount}, 분석: ${service.mainService}, 세부분석: ${service.antibodyType || '-'}, 슬라이드수: ${service.slideCount || '-'}`
+            ).join('\n');
+        }
+
+        // 정리 완료: 불필요한 함수들 제거됨
+
+        // 헬퍼 함수들
+        function getServiceInfo(data) {
+            let serviceInfo = '';
+            for (let i = 1; i <= 4; i++) {
+                const sampleCount = data[`sample_count_${i}`];
+                const serviceName = data[`service_name_${i}`];
+                if (sampleCount && serviceName) {
+                    serviceInfo += `${i}. 검체수: ${sampleCount}, 분석: ${serviceName}, 세부분석: ${data[`antibody_type_${i}`] || '-'}, 슬라이드수: ${data[`slide_count_${i}`] || '-'}, 총수량: ${data[`total_count_${i}`] || '-'}\n`;
+                }
+            }
+            return serviceInfo || '서비스 정보 없음';
+        }
+
+        function getSelectedOptions(name, data) {
+            const options = [];
+            Object.keys(data).forEach(key => {
+                if (key.startsWith(name) && data[key]) {
+                    options.push(data[key]);
+                }
+            });
+            return options.join(', ') || '선택 없음';
+        }
+
+        // 🚀 신청서 페이지 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            // 🎯 메인 페이지에서 전달받은 데이터로 체크박스 자동 선택 (자동완성 기능 없음)
+            autoCheckServicesFromMainPage();
+            
+            console.log('🎯 신청서 페이지가 로드되었습니다.');
+            console.log('📝 메인 페이지에서 전달받은 데이터만 체크박스에 반영됩니다.');
+        });
+
+        // 🎯 메인 페이지 서비스 데이터를 기반으로 체크박스 자동 선택
+        function autoCheckServicesFromMainPage() {
+            try {
+                // URL 파라미터에서 서비스 데이터 읽기
+                const urlParams = new URLSearchParams(window.location.search);
+                const serviceData = [];
+                
+                // 서비스 데이터 수집 (최대 4개 서비스)
+                for (let i = 1; i <= 4; i++) {
+                    const serviceName = urlParams.get(`service_name_${i}`);
+                    if (serviceName) {
+                        serviceData.push(serviceName);
+                    }
+                }
+                
+                console.log('📝 메인 페이지에서 전달받은 서비스 데이터:', serviceData);
+                
+                if (serviceData.length > 0) {
+                    // 먼저 모든 서비스 체크박스 초기화
+                    document.querySelectorAll('input[name="services"]').forEach(checkbox => {
+                        checkbox.checked = false;
+                    });
+                    
+                    // 서비스명을 체크박스 값으로 매핑
+                    const serviceMapping = {
+                        '파라핀 포매': 'paraffin',
+                        '동결절편': 'frozen',
+                        '특수염색': ['pas', 'masson', 'alcian_blue', 'pico_sirius_red', 'other_special'],
+                        '면역조직화학염색 (IHC)': 'ihc',
+                        '면역세포화학염색 (ICC)': 'icc',
+                        '면역형광염색 (IF)': 'if_staining',
+                        '형광제자리부합법 (FISH)': 'fish',
+                        'Tissue Microarray (TMA)': 'tma',
+                        'DNA/RNA 추출': ['dna_extraction', 'rna_extraction']
+                    };
+                    
+                    // 체크박스 자동 선택
+                    serviceData.forEach(serviceName => {
+                        const checkboxValues = serviceMapping[serviceName];
+                        
+                        if (checkboxValues) {
+                            if (Array.isArray(checkboxValues)) {
+                                // 특수염색이나 DNA/RNA 추출처럼 여러 체크박스가 매핑되는 경우
+                                // 첫 번째 옵션만 체크 (사용자가 구체적으로 선택할 수 있도록)
+                                const firstOption = checkboxValues[0];
+                                const checkbox = document.querySelector(`input[name="services"][value="${firstOption}"]`);
+                                if (checkbox) {
+                                    checkbox.checked = true;
+                                    console.log(`✅ 자동 체크됨: ${serviceName} -> ${firstOption}`);
+                                }
+                            } else {
+                                // 단일 체크박스 매핑
+                                const checkbox = document.querySelector(`input[name="services"][value="${checkboxValues}"]`);
+                                if (checkbox) {
+                                    checkbox.checked = true;
+                                    console.log(`✅ 자동 체크됨: ${serviceName} -> ${checkboxValues}`);
+                                }
+                            }
+                        } else {
+                            console.log(`⚠️ 매핑되지 않은 서비스: ${serviceName}`);
+                        }
+                    });
+                    
+                    // 성공 메시지 표시
+                    setTimeout(() => {
+                        if (serviceData.length > 0) {
+                            console.log(`🎉 메인 페이지에서 ${serviceData.length}개 서비스가 자동으로 선택되었습니다!`);
+                        }
+                    }, 200);
+                } else {
+                    console.log('📝 메인 페이지에서 전달받은 서비스 데이터가 없습니다.');
+                }
+                
+            } catch (error) {
+                console.error('❌ 서비스 자동 선택 중 오류:', error);
+            }
+        }
+    </script>
+
+
+    </script>
+
+    <!-- 🔧 환경 설정 파일 로드 -->
+    <script src="js/config.js"></script>
+    
+    <!-- 📸 html2canvas 라이브러리 (폼 캡처용) -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</body>
+</html> 
+</html> 

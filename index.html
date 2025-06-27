@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histopathology Core Center - 부산대학교 의과대학</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .form-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-group {
+            flex: 2;
+        }
+        
+        .count-group {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .special-type-row,
+        .sub-service-row {
+            margin-top: -0.5rem;
+        }
+        
+        .special-type-row .form-group,
+        .sub-service-row .form-group {
+            width: 100%;
+        }
+        
+        .special-type-row select,
+        .sub-service-row select {
+            color: #2c5282;
+            width: 100%;
+        }
+        
+        .quantity-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .quantity-group input[type="number"] {
+            width: 100%;
+        }
+        
+        input[type="text"]::placeholder,
+        input[type="email"]::placeholder {
+            color: #999;
+            font-size: 0.9em;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 8px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+            width: auto;
+            accent-color: #00A54D;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        
+        /* 삭제 버튼 스타일 */
+        .btn-delete, .btn-clear {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-delete:hover, .btn-clear:hover {
+            background-color: #c82333;
+        }
+        
+        .btn-clear {
+            background-color: #6c757d;
+        }
+        
+        .btn-clear:hover {
+            background-color: #5a6268;
+        }
+        
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        
+        .current-service {
+            background-color: #f8f9fa !important;
+            border-left: 3px solid #007bff;
+        }
+        
+        /* 입력 필드 클리어 버튼 스타일 */
+        .input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .clear-input-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .clear-input-btn:hover {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+        
+        /* JavaScript로 제어하므로 CSS 자동 표시 규칙 제거 */
+        
+        .input-wrapper input {
+            padding-right: 30px;
+        }
+        
+        .input-wrapper textarea {
+            padding-right: 30px;
+        }
+        
+        /* Select 요소 클리어 버튼 */
+        .clear-select-btn {
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 0;
+            width: 20px;
+            height: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .clear-select-btn:hover {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+        
+        .input-wrapper select {
+            padding-right: 45px;
+        }
+        
+        /* 체크박스 클리어 버튼 */
+        .clear-checkbox-btn {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 4px;
+            margin-left: 5px;
+            border-radius: 50%;
+            transition: all 0.2s;
+            display: none;
+        }
+        
+        .clear-checkbox-btn:hover {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+        
+        .checkbox-item input:checked + label + .clear-checkbox-btn {
+            display: inline-block;
+        }
+        
+        /* 체크박스 그룹 클리어 버튼 */
+        .clear-checkbox-group-btn {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 4px;
+            margin-left: 10px;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        
+        .clear-checkbox-group-btn:hover {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .service-group,
+            .count-group {
+                flex: none;
+                width: 100%;
+            }
+            
+            .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            /* 추가 모바일 개선사항 */
+            .services-table {
+                font-size: 12px;
+                overflow-x: auto;
+                display: block;
+                white-space: nowrap;
+            }
+            
+            .services-table thead,
+            .services-table tbody,
+            .services-table th,
+            .services-table td,
+            .services-table tr {
+                display: block;
+            }
+            
+            .services-table thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            .services-table tr {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+                padding: 10px;
+                border-radius: 8px;
+                background: #f9f9f9;
+            }
+            
+            .services-table td {
+                border: none;
+                position: relative;
+                padding-left: 50% !important;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                white-space: normal;
+                text-align: left;
+            }
+            
+            .services-table td:before {
+                content: attr(data-label) ": ";
+                position: absolute;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                font-weight: bold;
+                color: #2c5282;
+            }
+            
+            .contact-info {
+                margin-bottom: 2rem;
+            }
+            
+            .contact-info h3 {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info ul {
+                font-size: 0.9rem;
+                padding-left: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                font-size: 1rem;
+                padding: 12px 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .clear-input-btn,
+            .clear-select-btn {
+                font-size: 14px;
+                width: 18px;
+                height: 18px;
+            }
+            
+            .input-wrapper input,
+            .input-wrapper select,
+            .input-wrapper textarea {
+                font-size: 16px; /* iOS 줌 방지 */
+            }
+            
+            label {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+            
+            .checkbox-item {
+                flex-direction: row;
+                align-items: center;
+                margin-bottom: 8px;
+            }
+            
+            .checkbox-item label {
+                margin-bottom: 0;
+                margin-left: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 섹션 -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#home">
+                    <img src="assets/images/staining/pnu-logo.png" alt="부산대학교 의과대학 로고" class="logo-image">
+                    <div class="logo-text">
+                        <div class="text-line">
+                            <span class="university-name">Pusan National University</span>
+                            <span class="center-name">Histopathology Core Center</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home">홈</a></li>
+                    <li><a href="#services">분석 소개</a></li>
+                    <li><a href="#guide">이용안내</a></li>
+                    <li><a href="#contact">분석 신청</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title-line1">부산대학교 의과대학</h1>
+                <h2 class="hero-title-line2">Histopathology Core Center</h2>
+                <p class="hero-description">최첨단 장비와 전문 인력을 통한 정확하고 신뢰할 수 있는 조직병리 분석을 제공합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 염색 이미지 슬라이더 -->
+    <section class="staining-showcase">
+        <div class="container">
+            <div class="showcase-slider">
+                <div class="showcase-track">
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/h&e.jpg" alt="H&E 염색" loading="lazy" style="max-width: 100%; height: auto;">
+                        <div class="showcase-caption">
+                            <h3>H&E 염색</h3>
+                            <p>조직의 기본 구조를 관찰하는 기본 염색법</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/특수염색.jpg" alt="특수염색" loading="lazy" style="max-width: 100%; height: auto;">
+                        <div class="showcase-caption">
+                            <h3>특수염색</h3>
+                            <p>특정 세포/조직 성분의 선택적 염색</p>
+                        </div>
+                    </div>
+                                        <div class="showcase-slide">
+                        <img src="assets/images/staining/ihc2.jpg" alt="면역조직화학염색">
+                        <div class="showcase-caption">
+                            <h3>면역조직화학염색 (IHC)</h3>
+                            <p>특정 단백질의 발현 및 위치 확인</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/icc.jpg" alt="면역세포화학염색">
+                        <div class="showcase-caption">
+                            <h3>면역세포화학염색 (ICC)</h3>
+                            <p>세포 내 특정 단백질의 발현 및 위치 확인</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide" data-type="fluorescence">
+                        <img src="assets/images/staining/if.jpg" alt="면역형광염색">
+                        <div class="showcase-caption">
+                            <h3>면역형광염색 (IF)</h3>
+                            <p>형광표지를 이용한 단백질 발현 분석</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/fish.jpg" alt="FISH 염색">
+                        <div class="showcase-caption">
+                            <h3>형광제자리부합법 (FISH)</h3>
+                            <p>특정 DNA/RNA 서열의 위치 확인</p>
+                        </div>
+                    </div>
+                    <div class="showcase-slide">
+                        <img src="assets/images/staining/tma.jpg" alt="TMA">
+                        <div class="showcase-caption">
+                            <h3>Tissue Microarray (TMA)</h3>
+                            <p>다수의 조직을 한번에 분석하는 고효율 분석법</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="showcase-nav-buttons">
+                <button class="showcase-nav prev" aria-label="이전 이미지">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="showcase-dots"></div>
+                <button class="showcase-nav next" aria-label="다음 이미지">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+            <!-- 분석 소개 섹션 -->
+        <section class="services" id="services">
+            <div class="container">
+            <h2>분석 소개</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-microscope"></i>
+                    <h3>기본 조직처리 및 H&E 염색</h3>
+                    <p>기본적인 조직 처리와 H&E 염색<br>분석을 제공합니다.</p>
+                    <ul class="service-details">
+                        <li>파라핀 포매</li>
+                        <li>동결절편</li>
+                        <li>미세절편</li>
+                        <li>H&E 염색</li>
+                        <li>TMA (Tissue Microarray)</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>특수염색</h3>
+                    <p>다양한 특수염색 기법을 활용한<br>조직 분석을 제공합니다.</p>
+                    <ul class="service-details">
+                        <li>PAS 염색</li>
+                        <li>Masson's Trichrome 염색</li>
+                        <li>Alcian Blue 염색</li>
+                        <li>Pico Sirius Red 염색</li>
+                        <li>Oil Red O 염색 등</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>면역염색 및 분자병리</h3>
+                    <p>고급 면역염색 기법을 활용한<br>단백질 발현 분석을 제공합니다.</p>
+                    <ul class="service-details">
+                        <li>면역조직화학염색 (IHC)</li>
+                        <li>면역세포화학염색 (ICC)</li>
+                        <li>면역형광염색 (IF)</li>
+                        <li>형광제자리부합법 (FISH)</li>
+                        <li>DNA and RNA Extraction<br>from FFPE Tissue</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 이용안내 섹션 -->
+    <section class="guide" id="guide">
+        <div class="container">
+            <h2>이용안내</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <i class="far fa-clock"></i>
+                    <h3>운영시간</h3>
+                    <ul>
+                        <li>평일: 오전 9시 - 오후 6시</li>
+                        <li>점심시간: 12시 - 13시</li>
+                        <li>검체 접수: 오후 3시 - 5시</li>
+                        <li>주말 및 공휴일 휴무</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>이용 절차</h3>
+                    <ul>
+                        <li>전화 또는 이메일 상담</li>
+                        <li>온라인 신청서 제출</li>
+                        <li>검체 접수 (오후 3-5시)</li>
+                        <li>결과 수령 및 확인</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-vial"></i>
+                    <h3>검체 준비</h3>
+                    <ul>
+                        <li>고정액: 10% NBF 사용</li>
+                        <li>검체크기: 5mm 이하</li>
+                        <li>고정액양: 조직크기10-15배</li>
+                        <li>라벨링: 8자(A-Z,0-9)</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>상담 및 문의</h3>
+                    <ul>
+                        <li>전화: 051-510-8057, 8525</li>
+                        <li>이메일: histopath@pusan.ac.kr</li>
+                        <li>방문 상담: 사전 예약 필수</li>
+                        <li>평일 상시 상담 가능</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fab fa-kickstarter-k"></i>
+                    <h3>온라인 문의</h3>
+                    <ul>
+                        <li>카카오톡 실시간 상담</li>
+                        <li><a href="http://pf.kakao.com/_CkxhTG" class="kakao-link">채널 바로가기</a></li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                    </ul>
+                </div>
+                <div class="guide-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>위치</h3>
+                    <ul>
+                        <li>부산대학교 양산캠퍼스</li>
+                        <li>첨단의생명융합센터 202호</li>
+                        <li>&nbsp;</li>
+                        <li>&nbsp;</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+            <!-- 분석 신청 섹션 -->
+        <section class="contact" id="contact">
+            <div class="container">
+            <h2>분석 신청</h2>
+            <div class="contact-info">
+                <h3>신청서 작성 안내</h3>
+                <ul>
+                    <li>필수 항목(*)을 빠짐없이 기재해 주세요.</li>
+                    <li>검체 정보를 정확하게 입력해 주세요.</li>
+                    <li>특별한 요청사항이 있다면 비고란에 작성해 주세요.</li>
+                </ul>
+
+            </div>
+            <div class="contact-content">
+                <div id="service-requests">
+                    <form class="contact-form" id="serviceForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">신청자/담당교수 *</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="name" name="name" placeholder="신청자/담당교수" autocomplete="off" required>
+                                    <button type="button" class="clear-input-btn" data-target="name">×</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="institution">소속기관 *</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="institution" name="institution" placeholder="소속기관" autocomplete="off" required>
+                                    <button type="button" class="clear-input-btn" data-target="institution">×</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="department">부서/학과 *</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="department" name="department" placeholder="부서 또는 학과명을 입력하세요" autocomplete="off" required>
+                                    <button type="button" class="clear-input-btn" data-target="department">×</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">이메일 *</label>
+                                <div class="input-wrapper">
+                                    <input type="email" id="email" name="email" placeholder="청구서 수신용 이메일" autocomplete="off" required>
+                                    <button type="button" class="clear-input-btn" data-target="email">×</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">연락처 *</label>
+                                <div class="input-wrapper">
+                                    <input type="tel" id="phone" name="phone" autocomplete="off" required>
+                                    <button type="button" class="clear-input-btn" data-target="phone">×</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group count-group">
+                                <label for="sample-count">검체 수</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="sample-count" name="sample-count" min="1">
+                                    <button type="button" class="clear-input-btn" data-target="sample-count">×</button>
+                                </div>
+                            </div>
+                                                <div class="form-group service-group">
+                        <label for="main-service">의뢰 분석</label>
+                        <div class="input-wrapper">
+                            <select id="main-service" name="main-service">
+                                <option value="">분석을 선택하세요</option>
+                                        <option value="paraffin">파라핀 포매</option>
+                                        <option value="frozen">동결절편</option>
+                                        <option value="special">특수염색</option>
+                                        <option value="ihc">면역조직화학염색 (IHC)</option>
+                                        <option value="icc">면역세포화학염색 (ICC)</option>
+                                        <option value="if">면역형광염색 (IF)</option>
+                                        <option value="fish">형광제자리부합법 (FISH)</option>
+                                        <option value="tma">Tissue Microarray (TMA)</option>
+                                        <option value="extraction">DNA/RNA 추출</option>
+                                    </select>
+                            <button type="button" class="clear-select-btn" data-target="main-service">×</button>
+                        </div>
+                            </div>
+                                                <div class="form-group service-group sub-service-group" style="display: none;">
+                        <label for="sub-service">세부 분석</label>
+                        <div class="input-wrapper">
+                            <select id="sub-service" name="sub-service" disabled>
+                                <option value="">세부 분석을 선택하세요</option>
+                                    </select>
+                            <button type="button" class="clear-select-btn" data-target="sub-service">×</button>
+                        </div>
+                            </div>
+                            <div class="form-group service-group special-type-group" style="display: none;">
+                                <label for="special-type">특수염색 종류</label>
+                                <div class="input-wrapper">
+                                    <select id="special-type" name="special-type" disabled>
+                                        <option value="">특수염색 종류를 선택하세요</option>
+                                    </select>
+                                    <button type="button" class="clear-select-btn" data-target="special-type">×</button>
+                                </div>
+                            </div>
+                            <div class="form-group count-group">
+                                <label for="slide-count">슬라이드 수</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="slide-count" name="slide-count" min="1">
+                                    <button type="button" class="clear-input-btn" data-target="slide-count">×</button>
+                                </div>
+                            </div>
+                            <div class="form-group count-group">
+                                <label for="total-count">의뢰 총수량</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="total-count" name="total-count" readonly>
+                                    <button type="button" class="clear-input-btn" data-target="total-count" style="display: none;">×</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="services-table">
+                            <thead>
+                                <tr>
+                                    <th>검체 수</th>
+                                                                <th>의뢰 분석</th>
+                            <th>세부 분석</th>
+                                    <th>슬라이드 수</th>
+                                    <th>의뢰 총수량</th>
+                                    <th>삭제</th>
+                                </tr>
+                            </thead>
+                            <tbody id="services-list">
+                                <!-- 선택된 분석들이 여기에 표시됩니다 -->
+                            </tbody>
+                        </table>
+
+                        <div class="button-group">
+                            <button type="button" id="add-service-btn" class="btn btn-secondary">+ 추가 의뢰 분석</button>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1.5;">
+                                <label for="sample-name">검체명 (Sample Name) *</label>
+                                <div class="input-wrapper">
+                                    <input type="text" id="sample-name" name="sample-name" placeholder="검체명을 상세히 기재해주세요" autocomplete="off" required>
+                                    <button type="button" class="clear-input-btn" data-target="sample-name">×</button>
+                                </div>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label>검체 종류 (Sample Type) <button type="button" class="clear-checkbox-group-btn" data-target="sample-type" title="모든 검체 종류 선택 해제">×</button></label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="tissue" name="sample-type" value="tissue">
+                                        <label for="tissue">조직 (Tissue)</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="tissue" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="cell" name="sample-type" value="cell">
+                                        <label for="cell">세포 (Cell)</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="cell" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="other-sample" name="sample-type" value="other">
+                                        <label for="other-sample">기타</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="other-sample" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label>고정액 (Fixative) <button type="button" class="clear-checkbox-group-btn" data-target="fixative" title="모든 고정액 선택 해제">×</button></label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="nbf" name="fixative" value="nbf">
+                                        <label for="nbf">10% NBF</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="nbf" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="alcohol" name="fixative" value="alcohol">
+                                        <label for="alcohol">Alcohol</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="alcohol" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="other-fixative" name="fixative" value="other">
+                                        <label for="other-fixative">기타</label>
+                                        <button type="button" class="clear-checkbox-btn" data-target="other-fixative" title="이 항목 선택 해제">×</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="special-requests">특별 요청사항 (Special Requests)</label>
+                            <div class="input-wrapper">
+                                <textarea id="special-requests" name="special-requests" rows="3" placeholder="특별한 처리 방법이나 주의사항이 있으면 기재해주세요"></textarea>
+                                <button type="button" class="clear-input-btn" data-target="special-requests" style="top: 20px;">×</button>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                            <button type="button" class="btn btn-primary" onclick="openApplicationForm()">신청하기</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <!-- 🔧 환경 설정 파일 먼저 로드 -->
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <!-- 🚀 Google Apps Script 연동 -->
+    <script src="js/google-apps-script-connector.js"></script>
+
+    <!-- 🆕 메인 페이지 자동완성 시스템 -->
+    <script>
+        // 🎯 localStorage 기반 자동완성 시스템 (메인 페이지용)
+        class MainPageAutoComplete {
+            constructor() {
+                this.fields = [
+                    { id: 'name', key: 'main_names' },
+                    { id: 'institution', key: 'main_institutions' },
+                    { id: 'department', key: 'main_departments' },
+                    { id: 'email', key: 'main_emails' },
+                    { id: 'phone', key: 'main_phones' },
+                    { id: 'sample-name', key: 'main_sample_names' }
+                ];
+                
+                // 체크박스 그룹들
+                this.checkboxGroups = [
+                    { name: 'sample-type', key: 'main_sample_types' },
+                    { name: 'fixative', key: 'main_fixatives' }
+                ];
+                this.init();
+            }
+
+            init() {
+                // 페이지 로드 완료 후 실행
+                setTimeout(() => {
+                    this.fields.forEach(field => {
+                        const input = document.getElementById(field.id);
+                        if (input) {
+                            this.setupAutoComplete(input, field.key);
+                        }
+                    });
+
+                    // 폼 제출 시 데이터 저장
+                    const form = document.getElementById('serviceForm');
+                    if (form) {
+                        form.addEventListener('submit', (e) => this.saveFormData());
+                    }
+
+                    // "신청하기" 버튼 클릭 시에도 데이터 저장
+                    const submitBtn = document.querySelector('button[onclick="openApplicationForm()"]');
+                    if (submitBtn) {
+                        submitBtn.addEventListener('click', () => this.saveFormData());
+                    }
+
+                    // 체크박스 그룹들도 설정
+                    this.setupCheckboxGroups();
+                }, 500);
+            }
+
+            setupAutoComplete(input, storageKey) {
+                // 기존 input-wrapper 찾기
+                const wrapper = input.closest('.input-wrapper');
+                if (!wrapper) return;
+                
+                const dropdown = document.createElement('div');
+                dropdown.style.cssText = `
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: white;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    max-height: 200px;
+                    overflow-y: auto;
+                    z-index: 1000;
+                    display: none;
+                `;
+
+                wrapper.appendChild(dropdown);
+
+                // 입력 이벤트
+                input.addEventListener('input', () => {
+                    this.showSuggestions(input, dropdown, storageKey);
+                });
+
+                // 포커스 이벤트
+                input.addEventListener('focus', () => {
+                    this.showSuggestions(input, dropdown, storageKey);
+                });
+
+                // 블러 이벤트 (약간의 지연으로 클릭 가능)
+                input.addEventListener('blur', () => {
+                    setTimeout(() => {
+                        dropdown.style.display = 'none';
+                    }, 200);
+                });
+            }
+
+            showSuggestions(input, dropdown, storageKey) {
+                const savedData = this.getSavedData(storageKey);
+                const value = input.value.toLowerCase();
+                
+                let filtered = savedData;
+                if (value.trim()) {
+                    filtered = savedData.filter(item => 
+                        item.toLowerCase().includes(value)
+                    );
+                }
+                
+                filtered = filtered.slice(0, 5); // 최대 5개만 표시
+
+                if (filtered.length === 0) {
+                    dropdown.style.display = 'none';
+                    return;
+                }
+
+                dropdown.innerHTML = '';
+                filtered.forEach((item, index) => {
+                    const option = document.createElement('div');
+                    option.style.cssText = `
+                        padding: 10px 12px;
+                        cursor: pointer;
+                        border-bottom: ${index < filtered.length - 1 ? '1px solid #eee' : 'none'};
+                        transition: background-color 0.2s;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: 14px;
+                    `;
+
+                    const textSpan = document.createElement('span');
+                    textSpan.textContent = item;
+                    textSpan.style.cssText = `
+                        flex: 1;
+                        cursor: pointer;
+                    `;
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.innerHTML = '×';
+                    deleteBtn.style.cssText = `
+                        background: #ff4444;
+                        color: white;
+                        border: none;
+                        border-radius: 50%;
+                        width: 18px;
+                        height: 18px;
+                        cursor: pointer;
+                        font-size: 12px;
+                        line-height: 1;
+                        margin-left: 8px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        opacity: 0.7;
+                        transition: opacity 0.2s;
+                    `;
+                    deleteBtn.title = '이 항목 삭제';
+
+                    option.appendChild(textSpan);
+                    option.appendChild(deleteBtn);
+
+                    // 호버 효과
+                    option.addEventListener('mouseenter', () => {
+                        option.style.backgroundColor = '#f8f9fa';
+                        deleteBtn.style.opacity = '1';
+                    });
+
+                    option.addEventListener('mouseleave', () => {
+                        option.style.backgroundColor = 'white';
+                        deleteBtn.style.opacity = '0.7';
+                    });
+
+                    // 텍스트 클릭 시 선택
+                    textSpan.addEventListener('click', () => {
+                        input.value = item;
+                        dropdown.style.display = 'none';
+                        console.log(`✅ 자동완성: ${item} 선택됨`);
+                    });
+
+                    // 삭제 버튼 클릭 시 항목 삭제
+                    deleteBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        this.deleteData(storageKey, item);
+                        console.log(`🗑️ 항목 삭제됨: ${item}`);
+                        this.showSuggestions(input, dropdown, storageKey); // 목록 새로고침
+                    });
+
+                    dropdown.appendChild(option);
+                });
+
+                dropdown.style.display = 'block';
+            }
+
+            setupCheckboxGroups() {
+                this.checkboxGroups.forEach(group => {
+                    const checkboxes = document.querySelectorAll(`input[name="${group.name}"]`);
+                    checkboxes.forEach(checkbox => {
+                        checkbox.addEventListener('change', () => {
+                            if (checkbox.checked) {
+                                this.saveCheckboxData(group.key, checkbox.value);
+                            }
+                        });
+                    });
+                });
+
+                // 페이지 로드 시 저장된 체크박스 상태 복원
+                this.restoreCheckboxStates();
+            }
+
+            restoreCheckboxStates() {
+                this.checkboxGroups.forEach(group => {
+                    const savedData = this.getSavedData(group.key);
+                    if (savedData.length > 0) {
+                        // 가장 최근에 선택된 조합을 복원
+                        const lastSelection = savedData[0];
+                        if (lastSelection && lastSelection.length > 0) {
+                            lastSelection.forEach(value => {
+                                const checkbox = document.querySelector(`input[name="${group.name}"][value="${value}"]`);
+                                if (checkbox) {
+                                    checkbox.checked = true;
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+
+            saveFormData() {
+                // 텍스트 필드 저장
+                this.fields.forEach(field => {
+                    const input = document.getElementById(field.id);
+                    if (input && input.value.trim()) {
+                        this.saveData(field.key, input.value.trim());
+                    }
+                });
+
+                // 체크박스 상태 저장
+                this.checkboxGroups.forEach(group => {
+                    const checkedValues = [];
+                    const checkboxes = document.querySelectorAll(`input[name="${group.name}"]:checked`);
+                    checkboxes.forEach(checkbox => {
+                        checkedValues.push(checkbox.value);
+                    });
+                    if (checkedValues.length > 0) {
+                        this.saveCheckboxData(group.key, checkedValues);
+                    }
+                });
+
+                console.log('💾 메인 페이지 폼 데이터가 저장되었습니다!');
+            }
+
+            saveData(key, value) {
+                const saved = this.getSavedData(key);
+                if (!saved.includes(value)) {
+                    saved.unshift(value); // 앞에 추가
+                    if (saved.length > 10) saved.pop(); // 최대 10개만 유지
+                    localStorage.setItem(`histopath_${key}`, JSON.stringify(saved));
+                }
+            }
+
+            getSavedData(key) {
+                const saved = localStorage.getItem(`histopath_${key}`);
+                return saved ? JSON.parse(saved) : [];
+            }
+
+            // 체크박스 데이터 저장 (배열 형태로)
+            saveCheckboxData(key, values) {
+                const saved = this.getSavedData(key);
+                const valueArray = Array.isArray(values) ? values : [values];
+                
+                // 동일한 조합이 있는지 확인
+                const existingIndex = saved.findIndex(item => 
+                    Array.isArray(item) && 
+                    item.length === valueArray.length && 
+                    item.every(val => valueArray.includes(val))
+                );
+
+                if (existingIndex === -1) {
+                    saved.unshift(valueArray); // 앞에 추가
+                    if (saved.length > 5) saved.pop(); // 최대 5개 조합만 유지
+                    localStorage.setItem(`histopath_${key}`, JSON.stringify(saved));
+                } else {
+                    // 기존 조합을 맨 앞으로 이동
+                    const existing = saved.splice(existingIndex, 1)[0];
+                    saved.unshift(existing);
+                    localStorage.setItem(`histopath_${key}`, JSON.stringify(saved));
+                }
+            }
+
+            // 특정 항목 삭제
+            deleteData(key, valueToDelete) {
+                const saved = this.getSavedData(key);
+                const filtered = saved.filter(item => item !== valueToDelete);
+                localStorage.setItem(`histopath_${key}`, JSON.stringify(filtered));
+            }
+
+            // 모든 자동완성 데이터 초기화
+            clearAllData() {
+                this.fields.forEach(field => {
+                    localStorage.removeItem(`histopath_${field.key}`);
+                });
+                this.checkboxGroups.forEach(group => {
+                    localStorage.removeItem(`histopath_${group.key}`);
+                });
+                console.log('🧹 메인 페이지 모든 자동완성 데이터가 삭제되었습니다!');
+            }
+
+            // 테스트 데이터 추가 (개발용)
+            addTestData() {
+                this.saveData('main_names', '안재우');
+                this.saveData('main_names', '김철수');
+                this.saveData('main_names', '박영희');
+                this.saveData('main_institutions', '부산대학교');
+                this.saveData('main_institutions', '서울대학교');
+                this.saveData('main_departments', '의과대학');
+                this.saveData('main_departments', '병리학과');
+                this.saveData('main_emails', 'an73006514@gmail.com');
+                this.saveData('main_emails', 'test@example.com');
+                this.saveData('main_phones', '010-8507-2807');
+                this.saveData('main_phones', '010-1234-5678');
+                this.saveData('main_sample_names', '간 조직');
+                this.saveData('main_sample_names', '폐 조직');
+                this.saveData('main_sample_names', '유방 조직');
+                
+                // 체크박스 테스트 데이터
+                this.saveCheckboxData('main_sample_types', ['tissue']);
+                this.saveCheckboxData('main_sample_types', ['cell']);
+                this.saveCheckboxData('main_sample_types', ['tissue', 'cell']);
+                this.saveCheckboxData('main_fixatives', ['nbf']);
+                this.saveCheckboxData('main_fixatives', ['alcohol']);
+                this.saveCheckboxData('main_fixatives', ['nbf', 'alcohol']);
+                
+                console.log('🧪 메인 페이지 테스트 데이터가 추가되었습니다!');
+            }
+
+            // 저장된 데이터 확인
+            showSavedData() {
+                console.log('📋 텍스트 필드 데이터:');
+                this.fields.forEach(field => {
+                    const data = this.getSavedData(field.key);
+                    console.log(`📂 ${field.key}:`, data);
+                });
+                
+                console.log('📋 체크박스 데이터:');
+                this.checkboxGroups.forEach(group => {
+                    const data = this.getSavedData(group.key);
+                    console.log(`📂 ${group.key}:`, data);
+                });
+            }
+        }
+
+        // 🚀 메인 페이지 자동완성 시스템 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainAutoComplete = new MainPageAutoComplete();
+            
+            // 개발용: 테스트 데이터 추가 (첫 방문 시)
+            if (localStorage.getItem('histopath_main_names') === null) {
+                mainAutoComplete.addTestData();
+            }
+
+            // 콘솔에서 사용할 수 있는 전역 함수들
+            window.showMainAutoCompleteData = () => mainAutoComplete.showSavedData();
+            window.addMainTestData = () => mainAutoComplete.addTestData();
+            window.clearMainAutoCompleteData = () => mainAutoComplete.clearAllData();
+            
+            console.log('🎯 메인 페이지 자동완성 시스템이 활성화되었습니다!');
+            console.log('💡 입력란을 클릭하거나 타이핑하면 이전 데이터가 나타납니다.');
+            console.log('☑️ 체크박스는 페이지 로드 시 이전 선택 상태가 자동 복원됩니다.');
+            console.log('🗑️ 각 항목 옆의 × 버튼으로 개별 삭제 가능합니다.');
+        });
+    </script>
+</body>
+</html> 
