@@ -7,10 +7,10 @@
 const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhWVqsI14Cx_e7JpAtgJ2QeRr0TE5TM8sQXkyb32K-4VyVVfL0jw_cvu5PHA5A8XvPgA/exec';
 
 // =========================================
-// 📤 메인 함수: Google Apps Script로 데이터 전송 (이미지 캡처 + JSONP 방식)
+// 📤 메인 함수: Google Apps Script로 데이터 전송 (이미지 캡처 + POST 방식)
 // =========================================
 function submitToGoogleAppsScript() {
-  console.log('📤 Google Apps Script로 데이터 전송 시작 (이미지 캡처 + JSONP 방식)');
+  console.log('📤 Google Apps Script로 데이터 전송 시작 (이미지 캡처 + POST 방식)');
   
   // 📋 1단계: 폼 데이터 수집
   const formData = collectFormData();
@@ -36,7 +36,7 @@ function submitToGoogleAppsScript() {
         imageHeight: capturedData.height
       };
       
-      // 📡 4단계: Google Apps Script로 전송 (JSONP)
+      // 📡 4단계: Google Apps Script로 전송 (POST)
       updateLoadingMessage('📧 PDF 생성 및 이메일 발송 중...');
       return sendDataToGoogleAppsScript(formDataWithImage);
     })
@@ -359,7 +359,7 @@ function validateFormData(data) {
 }
 
 // =========================================
-// 📡 Google Apps Script로 데이터 전송 (JSONP 방식)
+// 📡 Google Apps Script로 데이터 전송 (POST 방식)
 // =========================================
 function sendDataToGoogleAppsScript(data) {
   console.log('📡 Google Apps Script로 전송 중... (POST 방식)');
