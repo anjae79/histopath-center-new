@@ -3,8 +3,8 @@
 // 🚀 부산대학교 의과대학 조직병리코어센터
 // =========================================
 
-// 🌐 Google Apps Script 웹앱 URL (이미지 기반 PDF 첨부 기능 - 2025-06-26 오류 수정 완벽 버전) - 캐시 버스팅: 11:30
-const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhWVqsI14Cx_e7JpAtgJ2QeRr0TE5TM8sQXkyb32K-4VyVVfL0jw_cvu5PHA5A8XvPgA/exec';
+// 🌐 Google Apps Script 웹앱 URL - config.js에서 동적으로 가져오기 (2025-06-27 연속카운터 버전)
+// const GOOGLE_APPS_SCRIPT_URL = CONFIG.googleAppsScript.url; // config.js에서 가져오기
 
 // =========================================
 // 📤 메인 함수: Google Apps Script로 데이터 전송 (이미지 캡처 + POST 방식)
@@ -372,8 +372,8 @@ function sendDataToGoogleAppsScript(data) {
       
       console.log('📡 POST 요청 데이터 크기:', JSON.stringify(data).length);
       
-      // fetch API를 사용한 POST 요청
-      fetch(GOOGLE_APPS_SCRIPT_URL, {
+      // fetch API를 사용한 POST 요청 (config.js에서 URL 가져오기)
+      fetch(CONFIG.googleAppsScript.url, {
         method: 'POST',
         body: formData
         // no-cors 모드 제거하여 정상적인 응답 수신
